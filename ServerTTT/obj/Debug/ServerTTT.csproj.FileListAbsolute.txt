@@ -1,0 +1,6 @@
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\bin\Debug\ServerTTT.exe.config
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\bin\Debug\ServerTTT.exe
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\bin\Debug\ServerTTT.pdb
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\obj\Debug\ServerTTT.csproj.CoreCompileInputs.cache
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\obj\Debug\ServerTTT.exe
+C:\Users\looky\source\repos\TicTacToe\ServerTTT\obj\Debug\ServerTTT.pdb
