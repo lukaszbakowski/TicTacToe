@@ -20,9 +20,22 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
+        MainWindow mainWindow = new MainWindow();
         public StartUp()
         {
             InitializeComponent();
+        }
+
+        private void cmdAccept_Click(object sender, RoutedEventArgs e)
+        {
+            if(tbNick.Text.Length != 0) {
+                mainWindow.Show();
+                this.Close();
+
+            } else
+            {
+
+            }
         }
     }
 }
