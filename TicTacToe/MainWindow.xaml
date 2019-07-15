@@ -7,9 +7,9 @@
         xmlns:views="clr-namespace:TicTacToe.Views"
         mc:Ignorable="d"
         Title="Tic Tac Toe" Height="auto" Width="auto">
-    <Grid Width="auto" Height="auto">
+    <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="50"></RowDefinition>
+        <RowDefinition Height="30"></RowDefinition>
         <RowDefinition></RowDefinition>
             <RowDefinition MinHeight="300"></RowDefinition>
 
@@ -22,9 +22,12 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <views:MainMenu Grid.ColumnSpan="6"/>
-        <Border Height="2" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="0" Background="Gray" VerticalAlignment="Bottom"/>
+        
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="0" Background="LightGray">
+            <views:MainMenu HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Border>
         <views:GameView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+       
         <views:MsgView Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
         <views:SlotView Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" />
     </Grid>

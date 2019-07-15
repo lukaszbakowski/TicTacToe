@@ -16,11 +16,13 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Content="Start" Grid.Column="0"/>
         <Button Content="Stop" Grid.Column="1"/>
         <Button Content="Restart" Grid.Column="2"/>
         <Button Content="Ranking" Grid.Column="3"/>
-        <Button Content="Unknown" Grid.Column="4" IsEnabled="False"/>
+        <Button Content="Unknown" Grid.Column="4" IsEnabled="False" Visibility="Hidden"/>
     </Grid>
 </UserControl>

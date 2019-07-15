@@ -37,3 +37,5 @@ C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MainMenu
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MainMenu.baml
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\SlotView.g.cs
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\SlotView.baml
+C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\StartUp.g.cs
+C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\StartUp.baml
