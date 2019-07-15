@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="550">
+             d:DesignHeight="450" d:DesignWidth="450">
 
-    <Grid Width="450" Height="450" Margin="50,50,50,50">
+    <Grid>
         
             <Grid.Resources>
 
@@ -37,25 +37,25 @@
         </Grid.Resources>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
-        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="145" Height="145" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
         
     </Grid>
    
