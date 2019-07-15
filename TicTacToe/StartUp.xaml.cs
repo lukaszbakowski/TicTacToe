@@ -18,7 +18,7 @@ namespace TicTacToe
     /// <summary>
     /// Interaction logic for StartUp.xaml
     /// </summary>
-    public partial class StartUp : UserControl
+    public partial class StartUp : Window
     {
         public StartUp()
         {
