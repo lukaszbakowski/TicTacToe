@@ -5,56 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="555" d:DesignWidth="555">
-    
-    <Grid Width="500" Height="500">
+             d:DesignHeight="550" d:DesignWidth="550">
+
+    <Grid Width="450" Height="450" Margin="50,50,50,50">
         <Grid.Resources>
-           
-                <Style TargetType="{x:Type Rectangle}">
-                    <Style.Triggers>
-                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ParallelTimeline  >
-                                        <ColorAnimation Storyboard.TargetProperty="Fill.Color" To="#FF767C84" />
-                                    </ParallelTimeline>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ParallelTimeline  >
-                                        <ColorAnimation Storyboard.TargetProperty="Fill.Color" To="LightGray" />
-                                    </ParallelTimeline>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            
+
+            <Style TargetType="{x:Type Rectangle}">
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ParallelTimeline  >
+                                    <ColorAnimation Storyboard.TargetProperty="Fill.Color" To="#FF767C84" />
+                                </ParallelTimeline>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ParallelTimeline  >
+                                    <ColorAnimation Storyboard.TargetProperty="Fill.Color" To="LightGray" />
+                                </ParallelTimeline>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="0" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5">
-
-        </Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="1" Grid.Row="0" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="0" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="1" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="1" Grid.Row="1" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="1" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="2" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="1" Grid.Row="2" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
-        <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="2" Stroke="Gray" StrokeThickness="1" Margin="5,5,5,5"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
+        <Rectangle Fill="LightGray" Width="120" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Stroke="Gray" StrokeThickness="1" IsEnabled="False"></Rectangle>
         
     </Grid>
 </UserControl>

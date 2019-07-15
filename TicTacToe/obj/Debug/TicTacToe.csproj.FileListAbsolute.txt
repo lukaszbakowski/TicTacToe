@@ -35,3 +35,5 @@ C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MsgView.
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MsgView.baml
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MainMenu.g.cs
 C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\MainMenu.baml
+C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\SlotView.g.cs
+C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Debug\Views\SlotView.baml
