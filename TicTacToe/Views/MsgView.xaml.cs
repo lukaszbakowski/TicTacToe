@@ -24,5 +24,22 @@ namespace TicTacToe.Views
         {
             InitializeComponent();
         }
+
+        private void btChat_Click(object sender, RoutedEventArgs e)
+        {
+            btPlayer.IsEnabled = true;
+            btChat.IsEnabled = false;
+            lbPlayer.Visibility = Visibility.Hidden;
+            tbChat.Visibility = Visibility.Visible;
+        }
+
+        private void btPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            btChat.IsEnabled = true;
+            btPlayer.IsEnabled = false;
+            tbChat.Visibility = Visibility.Hidden;
+            lbPlayer.Visibility = Visibility.Visible;
+
+        }
     }
 }

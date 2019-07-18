@@ -58,6 +58,10 @@
     <Compile Include="StartUp.xaml.cs">
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MsgViewModel.cs" />
+    <Compile Include="ViewModels\SlotViewModel.cs" />
     <Compile Include="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
@@ -132,7 +136,7 @@
   <ItemGroup>
     <Folder Include="Commands\Generic\" />
     <Folder Include="Commands\Specific\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="WindowModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

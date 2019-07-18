@@ -37,5 +37,15 @@ namespace TicTacToe
 
             }
         }
+
+        private void cmdEnter_Click(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                // DO YOUR WORK HERE and then set e.Handled to true on condition if you want to stop going to next line//
+
+                e.Handled = true;
+            }
+        }
     }
 }
