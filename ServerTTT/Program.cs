@@ -58,9 +58,9 @@ namespace ServerTTT
 
                         // Process the data sent by the client.
                         data = data.ToUpper();
-
+                        int data2 = 55;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
-                        byte[] msg = BitConverter.GetBytes(data);
+                        byte[] msg2 = BitConverter.GetBytes(data2);
 
                         // Send back a response.
                         stream.Write(msg, 0, msg.Length);

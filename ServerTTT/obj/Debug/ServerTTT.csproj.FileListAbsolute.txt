@@ -11,3 +11,10 @@ C:\Users\Administrator\Source\Repos\tictactoe\ServerTTT\obj\Debug\ServerTTT.cspr
 C:\Users\Administrator\Source\Repos\tictactoe\ServerTTT\obj\Debug\ServerTTT.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Source\Repos\tictactoe\ServerTTT\obj\Debug\ServerTTT.exe
 C:\Users\Administrator\Source\Repos\tictactoe\ServerTTT\obj\Debug\ServerTTT.pdb
+C:\dev\TicTacToe\ServerTTT\bin\Debug\ServerTTT.exe.config
+C:\dev\TicTacToe\ServerTTT\bin\Debug\ServerTTT.exe
+C:\dev\TicTacToe\ServerTTT\bin\Debug\ServerTTT.pdb
+C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.csprojAssemblyReference.cache
+C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.csproj.CoreCompileInputs.cache
+C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.exe
+C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.pdb
