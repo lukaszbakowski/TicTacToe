@@ -47,5 +47,10 @@ namespace TicTacToe
                 e.Handled = true;
             }
         }
+
+        private void TbNick_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
