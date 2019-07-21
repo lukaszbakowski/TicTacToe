@@ -82,13 +82,22 @@ namespace ServerTTT
         }
         public void SendDevice(string msg)
         {
-            for(int j =0; j <clients.Count;j++)
+            try
             {
-                NetworkStream stream = clients[j].GetStream();
-                string str = msg;
-                Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
-                stream.Write(reply, 0, reply.Length);
-                Console.WriteLine("Sent: {0}", str);
+                for (int j = 0; j < clients.Count; j++)
+                {
+                    NetworkStream stream = clients[j].GetStream();
+                    string str = msg;
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                    stream.Write(reply, 0, reply.Length);
+                    
+                }
+            } catch(Exception ex)
+            {
+                Console.WriteLine("Wyjatek: " + ex);
+            } finally
+            {
+                Console.WriteLine("Sent: {0}", msg);
             }
         }
     }
