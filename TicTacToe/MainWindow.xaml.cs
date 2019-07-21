@@ -33,7 +33,7 @@ namespace TicTacToe
         //private Thread thrMessaging;
         //private delegate void UpdateLogCallBack(string strMessage);
 
-
+   
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +43,9 @@ namespace TicTacToe
             //// txt_Log.AppendText("Connected");
             //thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
             //thrMessaging.Start();
+
         }
+        
         
     }
 }

@@ -3,120 +3,102 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
+using TicTacToe.Views;
+using TicTacToe.Commands.Generic;
+
 namespace TicTacToe.Connections
 {
-    class ClientSocketConnection
+    class ClientSocketConnection : ViewModelBase
     {
-        public TcpListener server = null;
-
-        public void ClientSocetConn()
-        {
-
-            try
-            {
-                // Set the TcpListener on port 13000.
-                Int32 port = 13000;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-
-                // TcpListener server = new TcpListener(port);
-                server = new TcpListener(localAddr, port);
-
-                // Start listening for client requests.
-                server.Start();
-
-                // Buffer for reading data
-                Byte[] bytes = new Byte[256];
-                String data = null;
-
-                // Enter the listening loop.
-                while (true)
-                {
-                    Console.Write("Waiting for a connection... ");
-
-                    // Perform a blocking call to accept requests.
-                    // You could also user server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
-
-                    data = null;
-
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
-
-                    int i;
-
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        // Translate data bytes to a ASCII string.
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        Console.WriteLine("Received: {0}", data);
-
-                        // Process the data sent by the client.
-                        data = data.ToUpper();
-
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine("Sent: {0}", data);
-                    }
-
-                    // Shutdown and end connection
-                    client.Close();
-                }
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-            }
-            finally
-            {
-                // Stop listening for new clients.
-                server.Stop();
-            }
-
-
-            Console.WriteLine("\nHit enter to continue...");
-            Console.Read();
-        }
-
-        private TcpClient tcp;
-        private StreamWriter SwSender;
-        private StreamReader SrReciever;
+       
         private Thread thrMessaging;
         private delegate void UpdateLogCallBack(string strMessage);
+        public string textSend = "";
+        public string textReceived = "";
+        Byte[] bytes = new Byte[256];
+        String data = null;
+        TcpClient tcpClient;
+        NetworkStream stream;
 
-
-        private void btn_Connect_Click()
+        public ClientSocketConnection()
         {
-            tcp = new TcpClient();
-           // txt_Log.AppendText("connecting");
-            tcp.Connect(IPAddress.Parse("127.0.0.1"), 13000);
-           // txt_Log.AppendText("Connected");
+            tcpClient = new TcpClient();
+
+            tcpClient.Connect(IPAddress.Parse("127.0.0.1"), 13000);
+            stream = tcpClient.GetStream();
             thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
             thrMessaging.Start();
+        }
+
+        ~ClientSocketConnection()
+        {
+            stream.Close();
+            tcpClient.Close();
+        }
+        public void ReceiveMessages()
+        {
+           
+                String responseData = String.Empty;
+
+                int i;
+
+                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                {
+                   
+                    responseData = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+
+                    TextReceived += responseData + "\n";
+                }
 
         }
-        private void ReceiveMessages()
-        {
-            SrReciever = new StreamReader(tcp.GetStream());
-            while (true)
+
+        public string TextSend {
+            get
             {
-                string response = SrReciever.ReadLine();
-               // txt_Log.Dispatcher.Invoke(new UpdateLogCallBack(this.UpdateLog), new object[] { response });
+                return this.textSend;
+            }
+            
+            
+            set
+            {
+                this.textSend = value;
+                OnPropertyChanged("TextSend");
             }
         }
-        private void UpdateLog(string strMessage)
+        public string TextReceived
         {
-            //txt_Log.AppendText(strMessage);
+            get { return this.textReceived; }
+            set
+            {
+                this.textReceived = value;
+                OnPropertyChanged("TextReceived");
+            }
         }
+
+        public ICommand SendCommand
+        {
+            get
+            {
+                return new connCommand(msgSend);
+            }
+        }
+        internal void msgSend()
+        {
+
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes(TextSend);
+            stream.Write(data, 0, data.Length);
+            TextSend = "";
+            
+ 
+        }
+
+
     }
 }

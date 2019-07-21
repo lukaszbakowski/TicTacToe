@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\obj\Release\
+C:\dev\TicTacToe\obj\Release\
 TicTacToe
 none
 false
 TRACE
-C:\Users\Administrator\Source\Repos\tictactoe\TicTacToe\App.xaml
+C:\dev\TicTacToe\App.xaml
 6-1655206491
 
-101195909457
+1563349460
 13-1505183044
 MainWindow.xaml;StartUp.xaml;Views\GameView.xaml;Views\MainMenu.xaml;Views\MsgView.xaml;Views\SlotView.xaml;
 

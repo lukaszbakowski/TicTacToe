@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
+             xmlns:conn="clr-namespace:TicTacToe.Connections"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="500">
-    <Grid Margin="50,0,0,50">
+    <UserControl.Resources>
+        <conn:ClientSocketConnection x:Key="clientConn"/>
+    </UserControl.Resources>
+    <Grid Margin="50,0,0,50" DataContext="{Binding Source={StaticResource clientConn}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -19,13 +23,15 @@
         <Button x:Name="btChat" Grid.Column="0" Content="Chat" Grid.Row="0" Height="25" IsEnabled="False" Click="btChat_Click"></Button>
         <Button x:Name="btPlayer" Grid.Column="1" Content="Players" Grid.Row="0" Height="25" Click="btPlayer_Click"></Button>
         <Border x:Name="borderChat" BorderThickness="1" BorderBrush="Gray" Margin="0,11,0,11" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock x:Name="tbChat" Text="hello" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5"></TextBlock>
+            <TextBlock x:Name="tbChat" Text="{Binding TextReceived}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+                
+            </TextBlock>
         </Border>
         <ListBox Margin="0,11,0,11" x:Name="lbPlayer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
             <ListBoxItem Content="{Binding NickName, Mode=TwoWay}"></ListBoxItem>
         </ListBox>
-            <TextBox Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Text="{Binding TextSend, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
 
-        <Button Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" HorizontalAlignment="Right"></Button>
+        <Button Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" HorizontalAlignment="Right" Command="{Binding SendCommand}"></Button>
     </Grid>
 </UserControl>

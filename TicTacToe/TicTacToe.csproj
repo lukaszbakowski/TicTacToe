@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Generic\connCommand.cs" />
+    <Compile Include="Connections\ViewModelBase.cs" />
     <Compile Include="Connections\ClientSocketConnection.cs" />
     <Compile Include="StartUp.xaml.cs">
       <DependentUpon>StartUp.xaml</DependentUpon>
@@ -135,7 +137,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\Generic\" />
     <Folder Include="Commands\Specific\" />
     <Folder Include="WindowModels\" />
   </ItemGroup>

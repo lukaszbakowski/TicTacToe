@@ -12,18 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TicTacToe.Connections;
 namespace TicTacToe.Views
 {
+
     /// <summary>
     /// Interaction logic for MsgView.xaml
     /// </summary>
     public partial class MsgView : UserControl
     {
+          
         public MsgView()
         {
             InitializeComponent();
+
         }
+
 
         private void btChat_Click(object sender, RoutedEventArgs e)
         {
@@ -41,5 +45,11 @@ namespace TicTacToe.Views
             lbPlayer.Visibility = Visibility.Visible;
 
         }
+        //public void BtSend_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string hello = tbSend.Text;
+        //    conn.SendMessages(hello);
+        //    tbSend.Text = "";
+        //}
     }
 }

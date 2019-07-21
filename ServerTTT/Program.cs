@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Threading;
 
 namespace ServerTTT
 {
@@ -15,75 +15,40 @@ namespace ServerTTT
     {
         static void Main(string[] args)
         {
-            TcpListener server = null;
-            try
+            
+            
+            Thread t = new Thread(delegate ()
             {
-                // Set the TcpListener on port 13000.
-                Int32 port = 13000;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                // replace the IP with your system IP Address...
+                Server myserver = new Server("127.0.0.1", 13000);
+            });
+            t.Start();
 
-                // TcpListener server = new TcpListener(port);
-                server = new TcpListener(localAddr, port);
+            Console.WriteLine("Server Started...!");
 
-                // Start listening for client requests.
-                server.Start();
+            //////////////////////////////////////////////////////
+            TcpClient Admin = new TcpClient();
+            Admin.Connect("127.0.0.1",13000);
+            NetworkStream streamAdmin = Admin.GetStream();
+        HERE:
+            string consoleCommand = "exit";
+            string read = Console.ReadLine();
 
-                // Buffer for reading data
-                Byte[] bytes = new Byte[256];
-                String data = null;
-
-                // Enter the listening loop.
-                while (true)
-                {
-                    Console.Write("Waiting for a connection... ");
-
-                    // Perform a blocking call to accept requests.
-                    // You could also user server.AcceptSocket() here.
-                    TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
-
-                    data = null;
-
-                    // Get a stream object for reading and writing
-                    NetworkStream stream = client.GetStream();
-
-                    int i;
-
-                    // Loop to receive all the data sent by the client.
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        // Translate data bytes to a ASCII string.
-                        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        Console.WriteLine("Received: {0}", data);
-
-                        // Process the data sent by the client.
-                        data = data.ToUpper();
-                        int data2 = 55;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
-                        byte[] msg2 = BitConverter.GetBytes(data2);
-
-                        // Send back a response.
-                        stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine("Sent: {0}", data);
-                    }
-
-                    // Shutdown and end connection
-                    client.Close();
-                }
-            }
-            catch (SocketException e)
+            if (read == consoleCommand)
             {
-                Console.WriteLine("SocketException: {0}", e);
-            }
-            finally
+                t.Abort();
+                Environment.Exit(0);
+            } else
             {
-                // Stop listening for new clients.
-                server.Stop();
+
+                string str = "Admin: " + read;
+                Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                streamAdmin.Write(reply, 0, reply.Length);
+                Console.WriteLine("Sent: {0}", str);
+                goto HERE;
             }
 
-
-            Console.WriteLine("\nHit enter to continue...");
-            Console.Read();
+          
         }
     }
 }
