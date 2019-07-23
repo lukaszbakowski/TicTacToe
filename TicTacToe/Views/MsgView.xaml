@@ -4,13 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
-             xmlns:conn="clr-namespace:TicTacToe.Connections"
-             mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="500">
+             xmlns:model="clr-namespace:TicTacToe.ViewModels">
+            
     <UserControl.Resources>
-        <conn:ClientSocketConnection x:Key="clientConn"/>
+        <model:MsgViewModel x:Key="MsgViewModel"/>
     </UserControl.Resources>
-    <Grid Margin="50,0,0,50" DataContext="{Binding Source={StaticResource clientConn}}">
+
+  
+    <Grid Margin="50,0,0,50" DataContext="{Binding Source={StaticResource MsgViewModel}}">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -23,7 +25,7 @@
         <Button x:Name="btChat" Grid.Column="0" Content="Chat" Grid.Row="0" Height="25" IsEnabled="False" Click="btChat_Click"></Button>
         <Button x:Name="btPlayer" Grid.Column="1" Content="Players" Grid.Row="0" Height="25" Click="btPlayer_Click"></Button>
         <Border x:Name="borderChat" BorderThickness="1" BorderBrush="Gray" Margin="0,11,0,11" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock x:Name="tbChat" Text="{Binding TextReceived}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+            <TextBlock x:Name="tbChat" Text="{Binding RcvMsg, Mode=TwoWay}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
                 
             </TextBlock>
         </Border>

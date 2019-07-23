@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 
-   using System.Windows.Input;
-
-namespace TicTacToe.Commands.Generic
+namespace TicTacToe.ViewModels.Base
 {
-    class connCommand : ICommand
+    class BaseRelayCommands : ICommand
     {
 
          private Action commandTask;
   
-          public connCommand(Action workToDo)
+          public BaseRelayCommands(Action workToDo)
           {
               commandTask = workToDo;
           }

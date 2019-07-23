@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TicTacToe.Connections;
+
+
+using TicTacToe.ViewModels;
 namespace TicTacToe.Views
 {
 
