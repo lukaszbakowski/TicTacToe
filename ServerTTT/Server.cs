@@ -14,14 +14,18 @@ using System.Threading.Tasks;
 namespace ServerTTT
 {
 
-
     class Server
     {
+ 
+        private int MethodToDo = -1;
+
         TcpListener server = null;
         List<TcpClient> clients = new List<TcpClient>();
         List<NetworkStream> streams = new List<NetworkStream>();
+
         public Server(string ip, int port)
         {
+ 
             IPAddress localAddr = IPAddress.Parse(ip);
             server = new TcpListener(localAddr, port);
             server.Start();
@@ -50,21 +54,63 @@ namespace ServerTTT
                 server.Stop();
             }
         }
+        public string GetBase64(int _hex)
+        {
+            byte[] bbytes = new byte[256];
+            bbytes = BitConverter.GetBytes(_hex);
+            return Convert.ToBase64String(bbytes);
+        }
         public void HandleDeivce(Object obj)
         {
             TcpClient client = (TcpClient)obj;
             NetworkStream stream = client.GetStream();
            
             string data = null;
-            Byte[] bytes = new Byte[256];
+            byte[] bytes = new byte[256];
+
             int i;
+
+
+            
+
+
             try
             {
-                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            OMG:
+                switch (MethodToDo)
                 {
-                    data = Encoding.ASCII.GetString(bytes, 0, i);
-                    Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.ManagedThreadId);
-                    SendDevice(data);
+                    case -1:
+                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    {
+
+                        data = Encoding.ASCII.GetString(bytes, 0, i);
+                        if (data == GetBase64(0xFFFF01))
+                        {
+                            Console.WriteLine("ojej przyslano nam bita :O");
+                            MethodToDo = 1;
+                            goto OMG;
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
+                            string snd = Thread.CurrentThread.Name + ": " + data;
+                            SendDevice(snd);
+                        }
+                    }
+                        break;
+                    case 1:
+                        while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                        {
+                            data = Encoding.ASCII.GetString(bytes, 0, i);
+                            Console.WriteLine("{1}: Nickname: {0}", data, Thread.CurrentThread.ManagedThreadId);
+                            MethodToDo = -1;
+                            Thread.CurrentThread.Name = data;
+                            goto OMG;
+
+                        }
+                        break;
+
                 }
             }
             catch (Exception e)

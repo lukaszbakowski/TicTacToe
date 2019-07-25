@@ -20,8 +20,8 @@ C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.exe
 C:\dev\TicTacToe\ServerTTT\obj\Debug\ServerTTT.pdb
 C:\dev\ServerTTT\bin\Debug\ServerTTT.exe.config
 C:\dev\ServerTTT\bin\Debug\ServerTTT.exe
-C:\dev\ServerTTT\obj\Debug\ServerTTT.csprojAssemblyReference.cache
 C:\dev\ServerTTT\obj\Debug\ServerTTT.csproj.CoreCompileInputs.cache
 C:\dev\ServerTTT\obj\Debug\ServerTTT.exe
 C:\dev\ServerTTT\obj\Debug\ServerTTT.pdb
 C:\dev\ServerTTT\bin\Debug\ServerTTT.pdb
+C:\dev\ServerTTT\obj\Debug\ServerTTT.csprojAssemblyReference.cache

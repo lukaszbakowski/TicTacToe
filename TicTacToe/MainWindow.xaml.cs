@@ -12,30 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using TicTacToe.ViewModels.Base;
-using TicTacToe.ViewModels.Base;
+
 using System.ComponentModel;
 
 namespace TicTacToe
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// 
     public partial class MainWindow : Window
     {
 
        
 
-        public MainWindow(string _nick)
+        public MainWindow()
         {
             InitializeComponent();
-            string nick = _nick;
-            BaseClientConnect.ConnSend(nick);
         }
+
+        //private void InitializeComponent()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -44,9 +47,10 @@ namespace TicTacToe
                 e.Cancel = false;
             } else
             {
-                BaseClientConnect.ConnSend("im clossing the window..");
+
+                BaseClientConnect.ConnCommand(0,"im clossing the window..");
                 BaseClientConnect.ConnStop();
-                e.Cancel = true;
+                
             }
         }
 

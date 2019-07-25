@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TicTacToe.ViewModels.Base;
 
 namespace TicTacToe
 {
@@ -20,7 +21,7 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
-        MainWindow mainWindow = new MainWindow();
+        
         public StartUp()
         {
             InitializeComponent();
@@ -28,8 +29,11 @@ namespace TicTacToe
 
         private void cmdAccept_Click(object sender, RoutedEventArgs e)
         {
-            if(tbNick.Text.Length != 0) {
+            
+            if (tbNick.Text.Length != 0) {
+                MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
+                BaseClientConnect.ConnCommand(1,tbNick.Text);
                 this.Close();
 
             } else
@@ -47,7 +51,10 @@ namespace TicTacToe
                 
                 if (tbNick.Text.Length != 0)
                 {
+
+                    MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
+                    BaseClientConnect.ConnCommand(1,tbNick.Text);
                     this.Close();
 
                 }

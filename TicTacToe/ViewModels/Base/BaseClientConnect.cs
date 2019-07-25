@@ -24,14 +24,48 @@ namespace TicTacToe.ViewModels.Base
             Stream.Close();
             TcpClient.Close();
         }
-        public static void ConnSend(string _msg)
+        public static void ConnCommand(int _i = -1, string _msg = "")
         {
-            string msg = _msg;
+            switch (_i)
+            {
+                case 0://disconnecting
+                    ConnSend(GetBase64(0xFFFF00));
+                    break;
+                case 1://define client nick name
+                    ConnSend(GetBase64(0xFFFF01));
+                    ConnSend(_msg);
+                    break;
+                case 2://join left slot of game
+                    ConnSend(GetBase64(0xFFFF02));
+                    break;
+                case 3://join right slot of game
+                    ConnSend(GetBase64(0xFFFF03));
+                    break;
+                case 4://
+                    ConnSend(GetBase64(0xFFFF04));
+                    break;
+                case 5://
+                    ConnSend(GetBase64(0xFFFF05));
+                    break;
+                default://send msg only
+                    ConnSend(_msg);
+                    break;
+            }
+        }
+        #region "private ENCODING"
+        private static void ConnSend(string _msg)
+        {
             NetworkStream stream = Stream;
-            int test = 0x1;
-            Byte[] data = System.Text.Encoding.ASCII.GetBytes(_msg);
-             data = BitConverter.GetBytes(test);
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(_msg);
             stream.Write(data, 0, data.Length);
         }
+
+        private static string GetBase64(int _hex)
+        {
+            byte[] bytes = new byte[256];
+            bytes = BitConverter.GetBytes(_hex);
+            return Convert.ToBase64String(bytes);
+        }
+        #endregion
     }
 }

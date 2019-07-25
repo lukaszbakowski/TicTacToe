@@ -30,6 +30,8 @@ namespace ServerTTT
             TcpClient Admin = new TcpClient();
             Admin.Connect("127.0.0.1",13000);
             NetworkStream streamAdmin = Admin.GetStream();
+
+
         HERE:
             string consoleCommand = "exit";
             string read = Console.ReadLine();
