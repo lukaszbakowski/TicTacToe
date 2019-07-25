@@ -40,15 +40,19 @@ namespace ServerTTT
                 Environment.Exit(0);
             } else
             {
-
-                string str = "Admin: " + read;
-                Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
-                streamAdmin.Write(reply, 0, reply.Length);
-                Console.WriteLine("Sent: {0}", str);
-                goto HERE;
+                if(streamAdmin.CanWrite)
+                {
+                    string str = "Admin: " + read;
+                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                    streamAdmin.Write(reply, 0, reply.Length);
+                    goto HERE;
+                } else
+                {
+                    Console.WriteLine("cant write to the server.. clossing ADMIN client connection..");
+                    streamAdmin.Close();
+                    Admin.Close();
+                }
             }
-
-          
         }
     }
 }

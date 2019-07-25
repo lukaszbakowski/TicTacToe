@@ -17,35 +17,37 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
+using TicTacToe.ViewModels.Base;
 
 namespace TicTacToe
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
 
-        //private TcpClient tcp;
-        //private StreamWriter SwSender;
-        //private StreamReader SrReciever;
-        //private Thread thrMessaging;
-        //private delegate void UpdateLogCallBack(string strMessage);
+       
 
-   
-        public MainWindow()
+        public MainWindow(string _nick)
         {
             InitializeComponent();
-            //tcp = new TcpClient();
-            //// txt_Log.AppendText("connecting");
-            //tcp.Connect(IPAddress.Parse("127.0.0.1"), 13000);
-            //// txt_Log.AppendText("Connected");
-            //thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
-            //thrMessaging.Start();
-
+            string nick = _nick;
+            BaseClientConnect.ConnSend(nick);
         }
-        
-        
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(MessageBox.Show("sdfds","hej", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                e.Cancel = false;
+            } else
+            {
+                BaseClientConnect.ConnSend("im clossing the window..");
+                BaseClientConnect.ConnStop();
+                e.Cancel = true;
+            }
+        }
     }
 }

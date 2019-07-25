@@ -20,7 +20,7 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
-        MainWindow mainWindow = new MainWindow();
+        
         public StartUp()
         {
             InitializeComponent();
@@ -29,6 +29,7 @@ namespace TicTacToe
         private void cmdAccept_Click(object sender, RoutedEventArgs e)
         {
             if(tbNick.Text.Length != 0) {
+                MainWindow mainWindow = new MainWindow(tbNick.Text);
                 mainWindow.Show();
                 this.Close();
 
@@ -43,7 +44,17 @@ namespace TicTacToe
             if (e.Key == Key.Return)
             {
                 // DO YOUR WORK HERE and then set e.Handled to true on condition if you want to stop going to next line//
+                if (tbNick.Text.Length != 0)
+                {
+                    MainWindow mainWindow = new MainWindow(tbNick.Text);
+                    mainWindow.Show();
+                    this.Close();
 
+                }
+                else
+                {
+
+                }
                 e.Handled = true;
             }
         }
