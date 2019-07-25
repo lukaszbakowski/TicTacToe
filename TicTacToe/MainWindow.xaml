@@ -8,8 +8,7 @@
         
         mc:Ignorable="d"
         Title="Tic Tac Toe" Height="auto" Width="auto"
-        WindowStartupLocation="CenterScreen">
-    
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="30"></RowDefinition>

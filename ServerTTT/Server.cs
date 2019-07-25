@@ -19,6 +19,7 @@ namespace ServerTTT
     {
         TcpListener server = null;
         List<TcpClient> clients = new List<TcpClient>();
+        List<NetworkStream> streams = new List<NetworkStream>();
         public Server(string ip, int port)
         {
             IPAddress localAddr = IPAddress.Parse(ip);
@@ -34,10 +35,13 @@ namespace ServerTTT
                 {
                     Console.WriteLine("Waiting for a new connection...");
                     TcpClient client = server.AcceptTcpClient();
+                    NetworkStream stream = client.GetStream();
                     Console.WriteLine("Connected!");
                     Thread t = new Thread(new ParameterizedThreadStart(HandleDeivce));
                     t.Start(client);
                     clients.Add(client);
+                    streams.Add(stream);
+                    
                 }
             }
             catch (SocketException e)
@@ -58,17 +62,10 @@ namespace ServerTTT
             {
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
-                    
                     data = Encoding.ASCII.GetString(bytes, 0, i);
                     Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.ManagedThreadId);
                     SendDevice(data);
-                    //string str = "Hey Device!";
-                    //Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
-                    //stream.Write(reply, 0, reply.Length);
-                    //Console.WriteLine("{1}: Sent: {0}", str, Thread.CurrentThread.ManagedThreadId);
                 }
-                
-                
             }
             catch (Exception e)
             {
@@ -84,16 +81,26 @@ namespace ServerTTT
         {
             try
             {
-                for (int j = 0; j < clients.Count; j++)
+                
+                for (int j = 0; j < streams.Count; j++)
                 {
-                    NetworkStream stream = clients[j].GetStream();
-                    string str = msg;
-                    Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
-                    stream.Write(reply, 0, reply.Length);
-                    
+                    if(streams[j].CanWrite)
+                    {
+                        string str = msg;
+                        Byte[] reply = System.Text.Encoding.ASCII.GetBytes(str);
+                        streams[j].Write(reply, 0, reply.Length);
+                    } else
+                    {
+                        Console.WriteLine("cant write to the client... disconnecting...");
+                        streams[j].Close();
+                        clients[j].Close();
+                        clients.Remove(clients[j]);
+                        streams.Remove(streams[j]);
+                    }
                 }
             } catch(Exception ex)
             {
+                
                 Console.WriteLine("Wyjatek: " + ex);
             } finally
             {
