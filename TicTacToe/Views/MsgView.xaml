@@ -32,8 +32,8 @@
         <ListBox Margin="0,11,0,11" x:Name="lbPlayer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
             <ListBoxItem Content="{Binding NickName, Mode=TwoWay}"></ListBoxItem>
         </ListBox>
-            <TextBox Text="{Binding TextSend, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding TextSend, Mode=TwoWay}" PreviewKeyDown="cmdEnter_Click" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
 
-        <Button Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" HorizontalAlignment="Right" Command="{Binding SendCommand}"></Button>
+        <Button x:Name="btSend" Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" HorizontalAlignment="Right" Command="{Binding SendCommand}"></Button>
     </Grid>
 </UserControl>

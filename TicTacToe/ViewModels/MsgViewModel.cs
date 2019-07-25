@@ -49,6 +49,7 @@ namespace TicTacToe.ViewModels
             TextSend = "";
             
         }
+
         #endregion
     }
 }

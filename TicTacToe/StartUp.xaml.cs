@@ -44,7 +44,17 @@ namespace TicTacToe
             {
                 // DO YOUR WORK HERE and then set e.Handled to true on condition if you want to stop going to next line//
 
-                e.Handled = true;
+                
+                if (tbNick.Text.Length != 0)
+                {
+                    mainWindow.Show();
+                    this.Close();
+
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
 

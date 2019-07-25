@@ -17,7 +17,8 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
+using TicTacToe.ViewModels.Base;
+using System.ComponentModel;
 
 namespace TicTacToe
 {
@@ -27,25 +28,22 @@ namespace TicTacToe
     public partial class MainWindow : Window
     {
 
-        //private TcpClient tcp;
-        //private StreamWriter SwSender;
-        //private StreamReader SrReciever;
-        //private Thread thrMessaging;
-        //private delegate void UpdateLogCallBack(string strMessage);
 
+   
    
         public MainWindow()
         {
             InitializeComponent();
-            //tcp = new TcpClient();
-            //// txt_Log.AppendText("connecting");
-            //tcp.Connect(IPAddress.Parse("127.0.0.1"), 13000);
-            //// txt_Log.AppendText("Connected");
-            //thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
-            //thrMessaging.Start();
+      
 
         }
+
         
-        
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            MessageBox.Show("hej hej", "hej hej", MessageBoxButton.OK, MessageBoxImage.Information);
+            
+        }
     }
 }

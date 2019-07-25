@@ -21,9 +21,5 @@ namespace TicTacToe.ViewModels.Base
             }
         }
         #endregion
-
-
-
-
     }
 }

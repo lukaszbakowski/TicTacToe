@@ -31,13 +31,23 @@ namespace TicTacToe.ViewModels.Base
             stream = tcpClient.GetStream();
             thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
             thrMessaging.Start();
+        }
+        public void ConnListening()
+        {
 
+
+        }
+        public void ConnStop()
+        {
+            //thrMessaging.Abort();
+            //stream.Close();
+            //tcpClient.Close();
         }
 
 
         public void ReceiveMessages()
         {
-            stream = tcpClient.GetStream();
+            //stream = tcpClient.GetStream();
             Byte[] bytes = new Byte[256];
             String responseData = String.Empty;
 
@@ -59,6 +69,7 @@ namespace TicTacToe.ViewModels.Base
 
         public void SendMessages(string _msg)
         {
+
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(_msg);
             stream.Write(data, 0, data.Length);
         }
