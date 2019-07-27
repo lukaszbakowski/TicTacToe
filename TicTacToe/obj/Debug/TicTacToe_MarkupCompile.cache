@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\dev\TicTacToe\obj\Debug\
+C:\dev\TicTacToe\TicTacToe\obj\Debug\
 TicTacToe
 none
 false
 DEBUG;TRACE
-C:\dev\TicTacToe\App.xaml
+C:\dev\TicTacToe\TicTacToe\App.xaml
 6-1655206491
 
-18388081723
+19-146475798
 13-1505183044
 MainWindow.xaml;StartUp.xaml;Views\GameView.xaml;Views\MainMenu.xaml;Views\MsgView.xaml;Views\SlotView.xaml;
 
-False
+True
 
