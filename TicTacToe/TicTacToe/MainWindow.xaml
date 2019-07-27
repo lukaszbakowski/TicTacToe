@@ -4,11 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe"
+
         xmlns:views="clr-namespace:TicTacToe.Views"
-        
+        Closing="Window_Closing"
         mc:Ignorable="d"
+        x:Name="test"
         Title="Tic Tac Toe" Height="auto" Width="auto"
         WindowStartupLocation="CenterScreen">
+
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="30"></RowDefinition>
@@ -28,9 +31,13 @@
         <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="0" Background="LightGray">
             <views:MainMenu HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Border>
-        <views:GameView Width="450" Height="450" Margin="0,50,0,50" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <views:GameView Width="450" 
+                        Height="450" 
+                        Margin="0,50,0,50" 
+                        Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
        
-        <views:MsgView Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <views:MsgView Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+                       x:Name="trol" />
         <views:SlotView Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

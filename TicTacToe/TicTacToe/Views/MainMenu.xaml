@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
+             xmlns:conn="clr-namespace:TicTacToe.Core"
+             xmlns:model="clr-namespace:TicTacToe.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="900">
-    <Grid>
+    <UserControl.Resources>
+        <model:MenuViewModel x:Key="MenuViewModel"/>
+        <conn:CoreClientParams x:Key="CoreClientParams" />
+    </UserControl.Resources>
+    <Grid DataContext="{Binding Source={StaticResource MenuViewModel}}" >
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>

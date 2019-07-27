@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicTacToe.ViewModels
+namespace TicTacToe.Core
 {
-    class MainMenuViewModel
+    class CoreClientCommands
     {
+
     }
 }

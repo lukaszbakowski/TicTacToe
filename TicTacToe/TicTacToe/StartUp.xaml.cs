@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TicTacToe.ViewModels.Base;
+using TicTacToe.Core;
+
 
 namespace TicTacToe
 {
@@ -21,7 +22,7 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
-        
+        MainWindow mainWindow;
         public StartUp()
         {
             InitializeComponent();
@@ -31,14 +32,14 @@ namespace TicTacToe
         {
             
             if (tbNick.Text.Length != 0) {
-                MainWindow mainWindow = new MainWindow();
+                mainWindow = new MainWindow();
                 mainWindow.Show();
-                BaseClientConnect.ConnCommand(1,tbNick.Text);
+                CoreClientConnect.ConnCommand(1,tbNick.Text);
                 this.Close();
 
             } else
             {
-
+                MessageBox.Show("Please type your nick name", " Nick Name", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -52,9 +53,9 @@ namespace TicTacToe
                 if (tbNick.Text.Length != 0)
                 {
 
-                    MainWindow mainWindow = new MainWindow();
+                    mainWindow = new MainWindow();
                     mainWindow.Show();
-                    BaseClientConnect.ConnCommand(1,tbNick.Text);
+                    CoreClientConnect.ConnCommand(1,tbNick.Text);
                     this.Close();
 
                 }

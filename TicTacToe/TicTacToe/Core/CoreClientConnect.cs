@@ -7,18 +7,23 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace TicTacToe.ViewModels.Base
+
+namespace TicTacToe.Core
 {
-    static class BaseClientConnect
+    static class CoreClientConnect
     {
-        private static readonly TcpClient TcpClient;
-        public static readonly NetworkStream Stream;
-        static BaseClientConnect()
+        private static readonly TcpClient TcpClient = new TcpClient();
+        public static NetworkStream Stream { get; set; }
+        public static Thread thrMessaging;
+        static CoreClientConnect()
         {
-            TcpClient = new TcpClient();
             TcpClient.Connect(IPAddress.Parse("127.0.0.1"), 13000);
+            
             Stream = TcpClient.GetStream();
+            thrMessaging = new Thread(CoreClientListening.ReceiveMessages);
+            thrMessaging.Start();
         }
+
         public static void ConnStop()
         {
             Stream.Close();
@@ -55,9 +60,9 @@ namespace TicTacToe.ViewModels.Base
         #region "private ENCODING"
         private static void ConnSend(string _msg)
         {
-            NetworkStream stream = Stream;
+
             byte[] data = System.Text.Encoding.ASCII.GetBytes(_msg);
-            stream.Write(data, 0, data.Length);
+            Stream.Write(data, 0, data.Length);
         }
 
         private static string GetBase64(int _hex)

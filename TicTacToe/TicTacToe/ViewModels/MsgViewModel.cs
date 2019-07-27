@@ -9,25 +9,25 @@ using TicTacToe.ViewModels.Base;
 
 namespace TicTacToe.ViewModels
 {
-    public class MsgViewModel : BaseSocketConn
+    public class MsgViewModel : BaseUserConnect
     {
-
-        public override string RcvMsg { get => base.RcvMsg; set { base.RcvMsg = value; OnPropertyChanged("RcvMsg"); } }
         
+     
         public MsgViewModel()
         {
-            
+          
         }
+
 
         #region "settery i gettery"
         private string textSend;
         public string TextSend
         {
-            get { return this.textSend; }
+            get { return textSend; }
 
             set
             {
-                this.textSend = value;
+                textSend = value;
                 OnPropertyChanged("TextSend");
             }
         }
@@ -38,11 +38,11 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseRelayCommands(msgSend);
+                return new BaseUserRelay(MsgSend_cmd);
             }
         }
 
-        internal void msgSend()
+        internal void MsgSend_cmd()
         {
 
             SendMessages(TextSend);

@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
+             xmlns:model="clr-namespace:TicTacToe.ViewModels"
+             xmlns:conn="clr-namespace:TicTacToe.Core"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="500">
-    <Grid Margin="50,50,0,0">
+    <UserControl.Resources>
+        <model:SlotViewModel x:Key="SlotViewModel"/>
+        <conn:CoreClientParams x:Key="CoreClientParams" />
+    </UserControl.Resources>
+    <Grid Margin="50,50,0,0" DataContext="{Binding Source={StaticResource SlotViewModel}}" >
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -15,13 +21,47 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="Gray" BorderThickness="2" Margin="25,25,25,25" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock Text="X" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <Border BorderBrush="Gray" 
+                BorderThickness="2" 
+                Margin="25,25,25,25" 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch">
+            <TextBlock Text="{Binding Xx, Mode=TwoWay}" 
+                       TextAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center">
+            </TextBlock>
         </Border>
-        <Border BorderBrush="Gray" BorderThickness="2" Margin="25,25,25,25" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TextBlock Text="O" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <Border BorderBrush="Gray" 
+                BorderThickness="2" 
+                Margin="25,25,25,25" 
+                Grid.Row="0" 
+                Grid.Column="1" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch">
+            <TextBlock Text="{Binding Oo, Mode=TwoWay}" 
+                       TextAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center">
+            </TextBlock>
         </Border>
-        <Button Grid.Column="0" Grid.Row="1" Content="Join" Width="111" Height="25" VerticalAlignment="Top"></Button>
-        <Button Grid.Column="1" Grid.Row="1" Content="Join" Width="111" Height="25" VerticalAlignment="Top"></Button>
+        <Button Grid.Column="0" 
+                Grid.Row="1" 
+                Content="Join" 
+                Width="111" 
+                Height="25" 
+                VerticalAlignment="Top"
+                Command="{Binding LeftJoin}" >
+        </Button>
+        <Button Grid.Column="1" 
+                Grid.Row="1" 
+                Content="Join" 
+                Width="111" 
+                Height="25" 
+                VerticalAlignment="Top"
+                Command="{Binding RightJoin}" >
+        </Button>
     </Grid>
 </UserControl>

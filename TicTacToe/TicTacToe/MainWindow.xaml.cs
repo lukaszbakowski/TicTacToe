@@ -33,33 +33,22 @@ namespace TicTacToe
         public MainWindow()
         {
             InitializeComponent();
+          
+            
         }
 
-        //private void InitializeComponent()
-        //{
-        //    throw new NotImplementedException();
-        //}
+ 
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if(MessageBox.Show("sdfds","hej", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            if(MessageBox.Show("hej, jestes pewny, ze chcesz wyjsc?", "Game Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
             {
-                e.Cancel = false;
+                e.Cancel = true;
+                
             } else
             {
-
-                BaseClientConnect.ConnCommand(0,"im clossing the window..");
-                BaseClientConnect.ConnStop();
-                
+                Environment.Exit(Environment.ExitCode);
             }
-        }
-
-        
-
-        public void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            MessageBox.Show("hej hej", "hej hej", MessageBoxButton.OK, MessageBoxImage.Information);
-            
         }
     }
 }

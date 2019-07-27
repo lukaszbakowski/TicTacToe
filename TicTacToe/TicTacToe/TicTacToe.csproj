@@ -55,15 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\Base\BaseClientConnect.cs" />
-    <Compile Include="ViewModels\Base\BaseRelayCommands.cs" />
+    <Compile Include="Core\CoreClientParams.cs" />
+    <Compile Include="Core\CoreClientCommands.cs" />
+    <Compile Include="Service\MessageHelper.cs" />
+    <Compile Include="Core\CoreClientConnect.cs" />
+    <Compile Include="Core\CoreClientListening.cs" />
+    <Compile Include="ViewModels\Base\BaseUserRelay.cs" />
     <Compile Include="StartUp.xaml.cs">
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Base\BaseSocketConn.cs" />
+    <Compile Include="ViewModels\Base\BaseUserConnect.cs" />
     <Compile Include="ViewModels\Base\BaseUserControl.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\MsgViewModel.cs" />
     <Compile Include="ViewModels\SlotViewModel.cs" />
     <Compile Include="Views\GameView.xaml.cs">
@@ -137,8 +141,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WindowModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TicTacToe.ViewModels.Base;
+using TicTacToe.Core;
 
-
-using TicTacToe.ViewModels;
 namespace TicTacToe.Views
 {
 
@@ -45,7 +45,6 @@ namespace TicTacToe.Views
             btPlayer.IsEnabled = false;
             tbChat.Visibility = Visibility.Hidden;
             lbPlayer.Visibility = Visibility.Visible;
-
         }
         private void cmdEnter_Click(object sender, KeyEventArgs e)
         {
@@ -53,8 +52,7 @@ namespace TicTacToe.Views
             {
                 // DO YOUR WORK HERE and then set e.Handled to true on condition if you want to stop going to next line//
 
-              
-                
+
 
                     e.Handled = true;
                 

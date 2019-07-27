@@ -4,13 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.Views"
+             xmlns:conn="clr-namespace:TicTacToe.Core"
+             xmlns:model="clr-namespace:TicTacToe.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="450">
+    <UserControl.Resources>
+        <model:GameViewModel x:Key="GameViewModel"/>
+        <conn:CoreClientParams x:Key="CoreClientParams" />
+    </UserControl.Resources>
 
-    <Grid>
-        
-            <Grid.Resources>
-
+    <Grid DataContext="{Binding Source={StaticResource GameViewModel}}" >
+        <Grid.Resources>
             <Style TargetType="{x:Type Rectangle}">
                 <Style.Triggers>
                     <EventTrigger RoutedEvent="Rectangle.MouseEnter">
