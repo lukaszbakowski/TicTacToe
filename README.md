@@ -1,5 +1,5 @@
 # TicTacToe
-Trying an online TicTacToe game via TCP/IP socket with C# and WPF project .NET
+Trying an online TicTacToe game via TCP/IP socket (server side console project) with C# and client side WPF project .NET
 
 # Author:
 Łukasz Bąkowski
