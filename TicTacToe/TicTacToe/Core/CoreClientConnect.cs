@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using SharedLibraryTTT;
 
 
 namespace TicTacToe.Core
@@ -33,44 +34,26 @@ namespace TicTacToe.Core
         {
             switch (_i)
             {
-                case 0://disconnecting
-                    ConnSend(GetBase64(0xFFFF00));
+                case 0://unset
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_0, _msg);
                     break;
                 case 1://define client nick name
-                    ConnSend(GetBase64(0xFFFF01));
-                    ConnSend(_msg);
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_1, _msg);
                     break;
                 case 2://join left slot of game
-                    ConnSend(GetBase64(0xFFFF02));
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_2, _msg);
                     break;
                 case 3://join right slot of game
-                    ConnSend(GetBase64(0xFFFF03));
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_3, _msg);
                     break;
-                case 4://
-                    ConnSend(GetBase64(0xFFFF04));
+                case 4://players list
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_4, _msg);
                     break;
                 case 5://
-                    ConnSend(GetBase64(0xFFFF05));
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_5, _msg);
                     break;
-                default://send msg only
-                    ConnSend(_msg);
-                    break;
+
             }
         }
-        #region "private ENCODING"
-        private static void ConnSend(string _msg)
-        {
-
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(_msg);
-            Stream.Write(data, 0, data.Length);
-        }
-
-        private static string GetBase64(int _hex)
-        {
-            byte[] bytes = new byte[256];
-            bytes = BitConverter.GetBytes(_hex);
-            return Convert.ToBase64String(bytes);
-        }
-        #endregion
     }
 }

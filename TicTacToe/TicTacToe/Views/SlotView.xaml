@@ -28,7 +28,7 @@
                 Grid.Column="0" 
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Stretch">
-            <TextBlock Text="{Binding Xx, Mode=TwoWay}" 
+            <TextBlock Text="{Binding Source={StaticResource CoreClientParams}, Path=Xx, Mode=TwoWay}" 
                        TextAlignment="Center" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center">
@@ -41,7 +41,8 @@
                 Grid.Column="1" 
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Stretch">
-            <TextBlock Text="{Binding Oo, Mode=TwoWay}" 
+            <TextBlock Text="{Binding Source={StaticResource CoreClientParams}, Path=Oo, Mode=TwoWay}"
+                       x:Name="lol"
                        TextAlignment="Center" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center">
@@ -50,12 +51,14 @@
         <Button Grid.Column="0" 
                 Grid.Row="1" 
                 Content="Join" 
+                IsEnabled="True"
                 Width="111" 
                 Height="25" 
                 VerticalAlignment="Top"
                 Command="{Binding LeftJoin}" >
         </Button>
         <Button Grid.Column="1" 
+                IsEnabled="True"
                 Grid.Row="1" 
                 Content="Join" 
                 Width="111" 

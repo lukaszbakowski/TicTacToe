@@ -23,6 +23,12 @@ namespace TicTacToe.Views
         public SlotView()
         {
             InitializeComponent();
+           
+        }
+
+        private void RightSlot(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
         }
     }
 }

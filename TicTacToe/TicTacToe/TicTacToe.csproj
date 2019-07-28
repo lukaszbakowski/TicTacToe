@@ -141,6 +141,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedLibraryTTT\SharedLibraryTTT.csproj">
+      <Project>{02b116a9-a0bb-47ae-bc28-f1159bfccf59}</Project>
+      <Name>SharedLibraryTTT</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

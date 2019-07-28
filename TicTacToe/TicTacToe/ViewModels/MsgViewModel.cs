@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SharedLibraryTTT;
 using System.Windows.Input;
 using TicTacToe.ViewModels.Base;
+using TicTacToe.Core;
+using System.Net.Sockets;
+using TicTacToe.Views;
 
 namespace TicTacToe.ViewModels
 {
     public class MsgViewModel : BaseUserConnect
     {
-        
-     
+        public MsgView _viewMsg = new MsgView();
+        public MsgView ViewMsg { get {
+                return _viewMsg;
+            } set { _viewMsg = value;
+                OnPropertyChanged("ViewMsg");
+            } }
         public MsgViewModel()
         {
           
@@ -44,10 +51,8 @@ namespace TicTacToe.ViewModels
 
         internal void MsgSend_cmd()
         {
-
-            SendMessages(TextSend);
+            CoreClientConnect.ConnCommand(2, TextSend);
             TextSend = "";
-            
         }
 
         #endregion

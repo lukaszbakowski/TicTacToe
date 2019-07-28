@@ -15,7 +15,7 @@ namespace TicTacToe.ViewModels
 
         public SlotViewModel()
         {
-
+            
         }
 
         #region"settery i gettery"
@@ -43,7 +43,7 @@ namespace TicTacToe.ViewModels
         }
         internal void LeftJoin_cmd()
         {
-
+            
         }
         public ICommand RightJoin
         {

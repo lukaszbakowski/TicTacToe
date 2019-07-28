@@ -52,12 +52,10 @@ namespace TicTacToe
                 
                 if (tbNick.Text.Length != 0)
                 {
-
                     mainWindow = new MainWindow();
                     mainWindow.Show();
                     CoreClientConnect.ConnCommand(1,tbNick.Text);
                     this.Close();
-
                 }
                 else
                 {

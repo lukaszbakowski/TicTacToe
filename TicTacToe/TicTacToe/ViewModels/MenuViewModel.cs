@@ -8,5 +8,6 @@ namespace TicTacToe.ViewModels
 {
     class MenuViewModel
     {
+
     }
 }

@@ -12,7 +12,7 @@
         <conn:CoreClientParams x:Key="CoreClientParams" />
     </UserControl.Resources>
 
-  
+
     <Grid Margin="50,0,0,50" DataContext="{Binding Source={StaticResource MsgViewModel}}">
 
         <Grid.RowDefinitions>
@@ -32,7 +32,8 @@
             </TextBlock>
         </Border>
         <ListBox Margin="0,11,0,11" x:Name="lbPlayer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
-            <ListBoxItem Content="{Binding NickName, Mode=TwoWay}"></ListBoxItem>
+            <ListBoxItem Content="{Binding Source={StaticResource CoreClientParams}, Path=NickList, Mode=TwoWay}">
+            </ListBoxItem>
         </ListBox>
         <TextBox Text="{Binding TextSend, Mode=TwoWay}" PreviewKeyDown="cmdEnter_Click" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
 
