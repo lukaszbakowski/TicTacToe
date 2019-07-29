@@ -16,14 +16,10 @@ namespace ServerTTT
         static void Main(string[] args)
         {
 
-
-
-            // replace the IP with your system IP Address...
             _ = new Server("127.0.0.1", 13000);
-
-
-
             Console.WriteLine("Server Started...!");
+
+
 
             //////////////////////////////////////////////////////
         //    TcpClient Admin = new TcpClient();

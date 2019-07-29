@@ -44,6 +44,7 @@ namespace TicTacToe.Core
         {
             OoChanged?.Invoke(null, e);
         }
+
         #endregion
         #region "Xx"
         private static string _xx = "X";

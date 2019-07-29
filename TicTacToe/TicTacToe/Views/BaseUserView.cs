@@ -16,18 +16,11 @@ using System.Runtime.Serialization.Json;
 
 namespace TicTacToe.Views
 {
-    /// <summary>
-    /// Interaction logic for SlotView.xaml
-    /// </summary>
-    public partial class SlotView : BaseUserView
+      public class BaseUserView : UserControl
     {
-
-        public SlotView()
+        public BaseUserView()
         {
-            InitializeComponent();
-
+            
         }
-
-
     }
 }

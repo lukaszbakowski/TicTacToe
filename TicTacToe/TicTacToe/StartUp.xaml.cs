@@ -22,7 +22,6 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
-        MainWindow mainWindow;
         public StartUp()
         {
             InitializeComponent();
@@ -32,10 +31,7 @@ namespace TicTacToe
         {
             
             if (tbNick.Text.Length != 0) {
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                CoreClientConnect.ConnCommand(1,tbNick.Text);
-                this.Close();
+                NewWindow(tbNick.Text);
 
             } else
             {
@@ -52,10 +48,7 @@ namespace TicTacToe
                 
                 if (tbNick.Text.Length != 0)
                 {
-                    mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    CoreClientConnect.ConnCommand(1,tbNick.Text);
-                    this.Close();
+                    NewWindow(tbNick.Text);
                 }
                 else
                 {
@@ -63,10 +56,11 @@ namespace TicTacToe
                 }
             }
         }
-
-        private void TbNick_TextChanged(object sender, TextChangedEventArgs e)
+        private void NewWindow(string _nick)
         {
-
+            MainWindow mainWindow = new MainWindow(_nick);
+            mainWindow.Show();
+            Close();
         }
     }
 }

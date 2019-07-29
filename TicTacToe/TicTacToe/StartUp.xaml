@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Kółko i Krzyżyk" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>
         <Label Content="Nick:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
-        <TextBox x:Name="tbNick" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" PreviewKeyDown="cmdEnter_Click" TextChanged="TbNick_TextChanged"></TextBox>
+        <TextBox x:Name="tbNick" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" PreviewKeyDown="cmdEnter_Click"></TextBox>
         <Button Content="Accept" Click="cmdAccept_Click" Grid.Row="2" Grid.Column="1" Width="150" Height="25" HorizontalAlignment="Right"></Button>
     </Grid>
 </Window>

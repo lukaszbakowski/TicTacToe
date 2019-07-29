@@ -41,7 +41,6 @@ namespace ServerTTT
                     ConnectedClient ConnClient = new ConnectedClient(client_acpt);
                     ResponseHandler.ConnClientList.Add(ConnClient); 
                     Console.WriteLine("Connected!");
-                    continue;
                 }
             }
             catch (SocketException e)

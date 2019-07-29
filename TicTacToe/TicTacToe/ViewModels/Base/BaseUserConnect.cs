@@ -12,38 +12,36 @@ using System.Threading;
 using TicTacToe.ViewModels;
 using TicTacToe.Core;
 using TicTacToe.Service;
-
+using System.Runtime.Serialization.Json;
 
 namespace TicTacToe.ViewModels.Base
 {
-    public class BaseUserConnect : BaseUserControl
+    public class BaseUserConnect<TYPE> : BaseUserControl where TYPE : class
     {
 
-
-
-
-        
         
         public BaseUserConnect()
         {
 
         }
-
-
-        public void SendMessages(string _msg)
+        #region "JSON Serialization"
+        public string Serializer(TYPE _obj)
         {
-            try
-            {
-                NetworkStream stream = CoreClientConnect.Stream;
-                byte[] data = Encoding.ASCII.GetBytes(_msg);
-                stream.Write(data, 0, data.Length);
-            }
-            catch (Exception ex)
-            {
-                MessageHelper.MsgErrorOk("Connection Error", "ERROR corrupted while sending msg to server: " + ex);
-                
-            }
-            
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(TYPE));
+            MemoryStream msObj = new MemoryStream();
+            js.WriteObject(msObj, _obj);
+            msObj.Position = 0;
+            StreamReader sr = new StreamReader(msObj);
+  
+            string json = sr.ReadToEnd();
+
+            sr.Close();
+            msObj.Close();
+
+            return json;
         }
+        #endregion
+
+
     }
 }

@@ -17,7 +17,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using TicTacToe.ViewModels.Base;
-
+using TicTacToe.Core;
+using SharedLibraryTTT;
 using System.ComponentModel;
 
 namespace TicTacToe
@@ -28,16 +29,15 @@ namespace TicTacToe
     public partial class MainWindow : Window
     {
 
-       
+        public static string PlayerName { get; set; }
 
-        public MainWindow()
+        public MainWindow(string _nick)
         {
             InitializeComponent();
-          
-            
+            CoreClientConnect.ConnCommand(1, _nick);
+            Service.MessageHelper.MsgErrorOk("123", "123");
+            PlayerName = _nick;
         }
-
- 
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {

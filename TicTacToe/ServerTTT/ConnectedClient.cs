@@ -13,7 +13,6 @@ namespace ServerTTT
     {
         public TcpClient Client { get; set; }
         public NetworkStream stream;
-        public string Name { get; set;}
 
         public Thread thread;
         public ConnectedClient(TcpClient _client)
@@ -80,7 +79,6 @@ namespace ServerTTT
                 data = Encoding.ASCII.GetString(bytes, 0, i);
                 Console.WriteLine("{1}: Nickname: {0}", data, Thread.CurrentThread.ManagedThreadId);
                 Thread.CurrentThread.Name = data;
-                Name = Thread.CurrentThread.Name;
                 data = string.Empty;
                 foreach(ConnectedClient cntClnt in ResponseHandler.ConnClientList)
                 {
@@ -106,7 +104,16 @@ namespace ServerTTT
         }
         private void DoCommand3()
         {
-
+            string data = null;
+            byte[] bytes = new byte[256];
+            int i;
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data = Encoding.ASCII.GetString(bytes, 0, i);
+                Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
+                ResponseHandler.SendMessage(SharedCommands.Command_3, data);
+                return;
+            }
         }
         private void DoCommand4()
         {

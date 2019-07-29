@@ -8,8 +8,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using TicTacToe.Service;
+using TicTacToe.ViewModels;
 using SharedLibraryTTT;
-using System.Runtime.Serialization;
+using SharedLibraryTTT.Json;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace TicTacToe.Core
 {
@@ -97,7 +100,13 @@ namespace TicTacToe.Core
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.MessageReceived = data + "\n";
+                
+                using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
+                {
+                    DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(SlotViewJson));
+                    SlotViewJson SlotSon = (SlotViewJson)deserializer.ReadObject(ms);
+                    SlotViewModel.SlotJson = SlotSon;
+                }
 
                 return;
             }

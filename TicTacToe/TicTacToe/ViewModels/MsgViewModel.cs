@@ -9,17 +9,14 @@ using TicTacToe.ViewModels.Base;
 using TicTacToe.Core;
 using System.Net.Sockets;
 using TicTacToe.Views;
+using SharedLibraryTTT.Json;
+
 
 namespace TicTacToe.ViewModels
 {
-    public class MsgViewModel : BaseUserConnect
+    public class MsgViewModel : BaseUserConnect<SlotViewJson>
     {
-        public MsgView _viewMsg = new MsgView();
-        public MsgView ViewMsg { get {
-                return _viewMsg;
-            } set { _viewMsg = value;
-                OnPropertyChanged("ViewMsg");
-            } }
+
         public MsgViewModel()
         {
           

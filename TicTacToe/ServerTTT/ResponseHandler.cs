@@ -26,7 +26,7 @@ namespace ServerTTT
                 {
                     SharedCommands.SendCommandHandler(cntClnt.stream, _command, _msg);
                     //cntClnt.stream.Write(reply, 0, reply.Length);
-                    //Console.WriteLine("Sent: {0} to {1}", _msg, cntClnt.Name);
+                    Console.WriteLine("Sent: {0} to {1}", _msg, cntClnt.thread.Name);
                 }
                 catch (Exception ex)
                 {
@@ -40,6 +40,7 @@ namespace ServerTTT
                 }
                 
             }
+
         }
     }
 }

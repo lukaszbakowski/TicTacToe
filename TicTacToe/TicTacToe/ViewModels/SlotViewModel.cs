@@ -5,32 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.ViewModels.Base;
 using System.Windows.Input;
+using SharedLibraryTTT.Json;
+using TicTacToe.Core;
 
 
 
 namespace TicTacToe.ViewModels
 {
-    public class SlotViewModel : BaseUserConnect
+    public class SlotViewModel : BaseUserConnect<SlotViewJson>
     {
 
         public SlotViewModel()
         {
-            
+            _slotJson = new SlotViewJson();
         }
 
         #region"settery i gettery"
-        private string _Oo = "O";
-        public string Oo
+
+        private static SlotViewJson _slotJson;
+        public static SlotViewJson SlotJson
         {
-            get { return _Oo; }
-            set { this._Oo = value; OnPropertyChanged(Oo); }
+            get
+            {
+                return _slotJson;
+            }
+            set
+            {
+                _slotJson = value;
+                OnSlotJsonChanged(EventArgs.Empty);
+            }
         }
-        private string _Xx = "X";
-        public string Xx
+
+        public static event EventHandler SlotJsonChanged;
+
+        protected static void OnSlotJsonChanged(EventArgs e)
         {
-            get { return _Xx; }
-            set { this._Xx = value; OnPropertyChanged(Xx); }
+            SlotJsonChanged?.Invoke(null, e);
         }
+
         #endregion
 
         #region "UI Commands"
@@ -43,7 +55,13 @@ namespace TicTacToe.ViewModels
         }
         internal void LeftJoin_cmd()
         {
-            
+            SlotViewJson TEST = new SlotViewJson();
+            TEST.RightJoin.Nick = "kupa";
+            TEST.RightJoin.Button = false;
+
+            string test = Serializer(TEST);
+
+            CoreClientConnect.ConnCommand(3, test);
         }
         public ICommand RightJoin
         {
@@ -55,7 +73,15 @@ namespace TicTacToe.ViewModels
         internal void RightJoin_cmd()
         {
 
+            SlotViewJson TEST = new SlotViewJson();
+            TEST.RightJoin.Nick = MainWindow.PlayerName;
+            TEST.RightJoin.Button = false;
+
+            string test = Serializer(TEST);
+
+            CoreClientConnect.ConnCommand(3, test);
         }
         #endregion
+
     }
 }
