@@ -16,11 +16,11 @@ namespace SharedLibraryTTT
         }
 
         #region "set options"
-        public static string Command_0 = GetBase64(0xFFFF00); //reserve or disconnecting?
-        public static string Command_1 = GetBase64(0xFFFF01); //nick name and player list
-        public static string Command_2 = GetBase64(0xFFFF02); //normal message
-        public static string Command_3 = GetBase64(0xFFFF03); //left join
-        public static string Command_4 = GetBase64(0xFFFF04); //rght join
+        public static string Command_0 = GetBase64(0xFFFF00); //in reserve
+        public static string Command_1 = GetBase64(0xFFFF01); //setting nick name and getting players list
+        public static string Command_2 = GetBase64(0xFFFF02); //chat handler
+        public static string Command_3 = GetBase64(0xFFFF03); //slots handler
+        public static string Command_4 = GetBase64(0xFFFF04); //data handler
         public static string Command_5 = GetBase64(0xFFFF05); //game handler
         #endregion
         public static string GetBase64(int _hex)

@@ -16,23 +16,18 @@ namespace ServerTTT
 
     class Server
     {
- 
-
-        TcpListener server = null;
+        private TcpListener server = null;
+        public static ClientStructures GameBoard { get; set; }
 
         public Server(string ip, int port)
         {
- 
+            GameBoard = new ClientStructures();
             IPAddress localAddr = IPAddress.Parse(ip);
             server = new TcpListener(localAddr, port);
             server.Start();
             Thread t = new Thread(StartListener);
             t.Start();
 
-        }
-        ~Server()
-        {
-            server.Stop();
         }
         public void StartListener()
         {
@@ -50,11 +45,10 @@ namespace ServerTTT
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
-                Thread.CurrentThread.Abort();
-                server.Stop();
+                Console.WriteLine("SERVER CORRUPTED ERROR: {0}, clossing all process...", e.ToString());
             } finally
             {
+                Thread.CurrentThread.Abort();
                 server.Stop();
             }
         }

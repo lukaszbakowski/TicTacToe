@@ -11,6 +11,7 @@ using TicTacToe.Service;
 using TicTacToe.ViewModels;
 using SharedLibraryTTT;
 using SharedLibraryTTT.Json;
+using SharedLibraryTTT.Json.Base;
 using System.Runtime.Serialization.Json;
 using System.IO;
 
@@ -87,7 +88,7 @@ namespace TicTacToe.Core
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.MessageReceived = data + "\n";
+                CoreClientParams.MessageReceived += data + "\n";
 
                 return;
             }
@@ -100,15 +101,9 @@ namespace TicTacToe.Core
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                
-                using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
-                {
-                    DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(SlotViewJson));
-                    SlotViewJson SlotSon = (SlotViewJson)deserializer.ReadObject(ms);
 
-                    SlotViewModel.SlotJson = SlotSon;
-                }
-
+                BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
+                SlotViewModel.SlotJson = JSON.Deserializer(data);
                 return;
             }
         }

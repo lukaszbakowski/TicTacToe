@@ -24,7 +24,6 @@ namespace ServerTTT
 
         public static void SendMessage(string _command, string _msg)
         {
-            byte[] reply = Encoding.ASCII.GetBytes(_msg);
             foreach (ConnectedClient cntClnt in ConnClientList)
             {
                 try
@@ -36,7 +35,6 @@ namespace ServerTTT
                     {
                         Console.WriteLine("Msg send failed to {0}", cntClnt.thread.Name);
                     }
-                    //cntClnt.stream.Write(reply, 0, reply.Length);
 
                 }
                 catch (Exception ex)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Threading;
 using SharedLibraryTTT;
+using SharedLibraryTTT.Json;
+using SharedLibraryTTT.Json.Base;
 
 namespace ServerTTT
 {
@@ -40,20 +42,20 @@ namespace ServerTTT
                     {
                   
                         DoCommand1();
+                        Console.WriteLine("IS THAT WORKING OR RETURNING?");
+
                     }
                     else if (data == SharedCommands.Command_2)
                     {
-                     
                         DoCommand2();
                     }
                     else if(data == SharedCommands.Command_3)
                     {
-                      
                         DoCommand3();
+                        DataSend("SlotViewJson");
                     }
                     else if (data == SharedCommands.Command_4)
                     {
-                     
                         DoCommand4();
                     }
                     else if (data == SharedCommands.Command_5)
@@ -121,17 +123,46 @@ namespace ServerTTT
                 data = Encoding.ASCII.GetString(bytes, 0, i);
 
                 Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
-                ResponseHandler.SendMessage(SharedCommands.Command_3, data);
+                BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
+                SlotViewJson NewSlot = JSON.Deserializer(data);
+
+                
+
+                Server.GameBoard.SlotSon = NewSlot;
+                //string test = JSON.Serializer(Server.GameBoard.SlotSon);
+                //Console.WriteLine("TEST: " + test);
                 return;
             }
         }
         private void DoCommand4()
         {
+            string data;
+            byte[] bytes = new byte[256];
+            int i;
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data = Encoding.ASCII.GetString(bytes, 0, i);
 
+                DataSend(data);
+                return;
+            }
         }
         private void DoCommand5()
         {
 
+        }
+        private void DataSend(string _choice)
+        {
+            switch(_choice)
+            {
+                case "SlotViewJson":
+                    BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
+                    //string test = JSON.Serializer(Server.GameBoard.SlotSon);
+                    //Console.WriteLine("RESPONSE TEST: " + test);
+                    ResponseHandler.SendMessage(SharedCommands.Command_3, JSON.Serializer(Server.GameBoard.SlotSon));
+                    
+                    break;
+            }
         }
     }
 }

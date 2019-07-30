@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization.Json;
+using TicTacToe.Core;
 
 namespace TicTacToe.Views
 {
@@ -55,6 +56,11 @@ namespace TicTacToe.Views
             btn_LeftLeave.Visibility = Visibility.Hidden;
 
             btn_RightJoin.Visibility = Visibility.Visible;
+        }
+ 
+        private void GetDataOnLoad(object sender, RoutedEventArgs e)
+        {
+            CoreClientConnect.ConnCommand(4, "SlotViewJson");
         }
     }
 }

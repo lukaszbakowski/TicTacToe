@@ -14,7 +14,7 @@ namespace TicTacToe.ViewModels
 {
     public class SlotViewModel : BaseUserConnect<SlotViewJson>
     {
-
+        
         public SlotViewModel()
         {
             _slotJson = new SlotViewJson();
@@ -55,11 +55,11 @@ namespace TicTacToe.ViewModels
         }
         internal void LeftJoin_cmd()
         {
-            SlotViewJson JSON = SlotJson;
-            JSON.Left.Nick = MainWindow.PlayerName;
-            JSON.Left.Button = false;
 
-            string StringSon = Serializer(JSON);
+            SlotJson.Left.Nick = MainWindow.PlayerName;
+            SlotJson.Left.Button = false;
+
+            string StringSon = Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
         }
@@ -73,11 +73,11 @@ namespace TicTacToe.ViewModels
         internal void RightJoin_cmd()
         {
 
-            SlotViewJson JSON = SlotJson;
-            JSON.Right.Nick = MainWindow.PlayerName;
-            JSON.Right.Button = false;
+ 
+            SlotJson.Right.Nick = MainWindow.PlayerName;
+            SlotJson.Right.Button = false;
 
-            string StringSon = Serializer(JSON);
+            string StringSon = Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
         }
@@ -91,11 +91,11 @@ namespace TicTacToe.ViewModels
         }
         internal void RightLeave_cmd()
         {
-            SlotViewJson JSON = SlotJson;
-            JSON.Right.Nick = "O";
-            JSON.Right.Button = true;
 
-            string StringSon = Serializer(JSON);
+            SlotJson.Right.Nick = "O";
+            SlotJson.Right.Button = true;
+
+            string StringSon = Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
 
@@ -109,11 +109,11 @@ namespace TicTacToe.ViewModels
         }
         internal void LeftLeave_cmd()
         {
-            SlotViewJson JSON = SlotJson;
-            JSON.Left.Nick = "X";
-            JSON.Left.Button = true;
 
-            string StringSon = Serializer(JSON);
+            SlotJson.Left.Nick = "X";
+            SlotJson.Left.Button = true;
+
+            string StringSon = Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
 
