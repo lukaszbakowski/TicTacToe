@@ -22,6 +22,7 @@ namespace TicTacToe
     /// </summary>
     public partial class StartUp : Window
     {
+        private readonly MainWindow _mainWindow = new MainWindow();
         public StartUp()
         {
             InitializeComponent();
@@ -58,8 +59,9 @@ namespace TicTacToe
         }
         private void NewWindow(string _nick)
         {
-            MainWindow mainWindow = new MainWindow(_nick);
-            mainWindow.Show();
+            MainWindow.PlayerName = _nick;
+            CoreClientConnect.ConnCommand(1, _nick);
+            _mainWindow.Show();
             Close();
         }
     }

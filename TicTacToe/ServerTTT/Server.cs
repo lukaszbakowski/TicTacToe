@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-
+using SharedLibraryTTT;
 
 
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace ServerTTT
 {
 
-    class Server : ServerCommands
+    class Server
     {
  
 
@@ -30,6 +30,10 @@ namespace ServerTTT
             t.Start();
 
         }
+        ~Server()
+        {
+            server.Stop();
+        }
         public void StartListener()
         {
             try
@@ -41,12 +45,17 @@ namespace ServerTTT
                     ConnectedClient ConnClient = new ConnectedClient(client_acpt);
                     ResponseHandler.ConnClientList.Add(ConnClient); 
                     Console.WriteLine("Connected!");
+
                 }
             }
             catch (SocketException e)
             {
                 Console.WriteLine("SocketException: {0}", e);
                 Thread.CurrentThread.Abort();
+                server.Stop();
+            } finally
+            {
+                server.Stop();
             }
         }
 

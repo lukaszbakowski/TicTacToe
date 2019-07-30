@@ -47,7 +47,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
-    <Compile Include="ServerCommands.cs" />
     <Compile Include="ResponseHandler.cs" />
   </ItemGroup>
   <ItemGroup>

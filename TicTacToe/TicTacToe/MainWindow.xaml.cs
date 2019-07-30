@@ -31,12 +31,10 @@ namespace TicTacToe
 
         public static string PlayerName { get; set; }
 
-        public MainWindow(string _nick)
+        public MainWindow()
         {
             InitializeComponent();
-            CoreClientConnect.ConnCommand(1, _nick);
-            Service.MessageHelper.MsgErrorOk("123", "123");
-            PlayerName = _nick;
+            CoreClientConnect.ConnStart();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

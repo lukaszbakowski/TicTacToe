@@ -9,9 +9,9 @@ using SharedLibraryTTT;
 
 namespace ServerTTT
 {
-    class ConnectedClient : ServerCommands
+    class ConnectedClient
     {
-        public TcpClient Client { get; set; }
+        public TcpClient Client;
         public NetworkStream stream;
 
         public Thread thread;
@@ -25,36 +25,43 @@ namespace ServerTTT
 
         private void ClientListening()
         {
-            
-            string data = null;
+
+            string data;
             byte[] bytes = new byte[256];
             int i;
-
+            NetworkStream test = Client.GetStream();
             try
             {
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
+
                     data = Encoding.ASCII.GetString(bytes, 0, i);
                     if (data == SharedCommands.Command_1)
                     {
+                  
                         DoCommand1();
                     }
                     else if (data == SharedCommands.Command_2)
                     {
+                     
                         DoCommand2();
                     }
                     else if(data == SharedCommands.Command_3)
                     {
+                      
                         DoCommand3();
                     }
                     else if (data == SharedCommands.Command_4)
                     {
+                     
                         DoCommand4();
                     }
                     else if (data == SharedCommands.Command_5)
                     {
+                      
                         DoCommand5();
-                    } else
+                    }
+                    else
                     {
                         throw new Exception("CONNECTION CORRUPTED - no command.. disconecting..");
                     }
@@ -71,7 +78,7 @@ namespace ServerTTT
         }
         private void DoCommand1()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
@@ -84,13 +91,15 @@ namespace ServerTTT
                 {
                     data += cntClnt.thread.Name + "\n";
                 }
+
                 ResponseHandler.SendMessage(SharedCommands.Command_1, data);
+                
                 return;
             }
         }
         private void DoCommand2()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
@@ -104,12 +113,13 @@ namespace ServerTTT
         }
         private void DoCommand3()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
+
                 Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
                 ResponseHandler.SendMessage(SharedCommands.Command_3, data);
                 return;

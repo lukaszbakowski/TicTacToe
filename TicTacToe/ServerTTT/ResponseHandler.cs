@@ -17,6 +17,11 @@ namespace ServerTTT
 
         public static List<ConnectedClient> ConnClientList = new List<ConnectedClient>();
 
+        static ResponseHandler()
+        {
+
+        }
+
         public static void SendMessage(string _command, string _msg)
         {
             byte[] reply = Encoding.ASCII.GetBytes(_msg);
@@ -24,9 +29,15 @@ namespace ServerTTT
             {
                 try
                 {
-                    SharedCommands.SendCommandHandler(cntClnt.stream, _command, _msg);
+                    if (SharedCommands.SendCommandHandler(cntClnt.stream, _command, _msg))
+                    {
+                        Console.WriteLine("Succesfully send msg to {0}", cntClnt.thread.Name);
+                    } else
+                    {
+                        Console.WriteLine("Msg send failed to {0}", cntClnt.thread.Name);
+                    }
                     //cntClnt.stream.Write(reply, 0, reply.Length);
-                    Console.WriteLine("Sent: {0} to {1}", _msg, cntClnt.thread.Name);
+
                 }
                 catch (Exception ex)
                 {

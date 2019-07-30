@@ -28,6 +28,33 @@ namespace TicTacToe.Views
 
         }
 
+        private void Click_RightJoin(object sender, RoutedEventArgs e)
+        {
+            btn_RightJoin.Visibility = Visibility.Hidden;
+            btn_RightLeave.Visibility = Visibility.Visible;
 
+            btn_LeftJoin.Visibility = Visibility.Hidden;
+        }
+        private void Click_RightLeave(object sender, RoutedEventArgs e)
+        {
+            btn_RightJoin.Visibility = Visibility.Visible;
+            btn_RightLeave.Visibility = Visibility.Hidden;
+
+            btn_LeftJoin.Visibility = Visibility.Visible;
+        }
+        private void Click_LeftJoin(object sender, RoutedEventArgs e)
+        {
+            btn_LeftJoin.Visibility = Visibility.Hidden;
+            btn_LeftLeave.Visibility = Visibility.Visible;
+
+            btn_RightJoin.Visibility = Visibility.Hidden;
+        }
+        private void Click_LeftLeave(object sender, RoutedEventArgs e)
+        {
+            btn_LeftJoin.Visibility = Visibility.Visible;
+            btn_LeftLeave.Visibility = Visibility.Hidden;
+
+            btn_RightJoin.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace TicTacToe.Views
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class MainMenu : BaseUserView
     {
         public MainMenu()
         {

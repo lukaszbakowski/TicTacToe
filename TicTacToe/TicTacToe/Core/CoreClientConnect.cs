@@ -18,12 +18,16 @@ namespace TicTacToe.Core
         public static Thread thrMessaging;
         static CoreClientConnect()
         {
+
+        }
+        public static void ConnStart()
+        {
             TcpClient.Connect(IPAddress.Parse("127.0.0.1"), 13000);
-            
             Stream = TcpClient.GetStream();
             thrMessaging = new Thread(CoreClientListening.ReceiveMessages);
             thrMessaging.Start();
         }
+
 
         public static void ConnStop()
         {

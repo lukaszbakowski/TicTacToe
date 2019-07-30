@@ -19,7 +19,7 @@ namespace TicTacToe.Views
     /// <summary>
     /// Interaction logic for game.xaml
     /// </summary>
-    public partial class GameView : UserControl
+    public partial class GameView : BaseUserView
     {
         public GameView()
         {

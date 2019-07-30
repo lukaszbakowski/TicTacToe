@@ -8,21 +8,21 @@ namespace SharedLibraryTTT.Json
 {
     public class SlotViewJson
     {
-        public Join LeftJoin { get; set; }
-        public Join RightJoin { get; set; }
+        public Slot Left { get; set; }
+        public Slot Right { get; set; }
         public SlotViewJson()
         {
-            LeftJoin = new Join();
-            RightJoin = new Join();
-            LeftJoin.Nick = "X";
-            RightJoin.Nick = "O";
+            Left = new Slot();
+            Right = new Slot();
+            Left.Nick = "X";
+            Right.Nick = "O";
         }
-        public class Join
+        public class Slot
         {
 
             public string Nick { get; set; }
             public bool Button { get; set; }
-            public Join()
+            public Slot()
             {
                 Button = true;
             }

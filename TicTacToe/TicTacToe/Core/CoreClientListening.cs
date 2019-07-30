@@ -105,6 +105,7 @@ namespace TicTacToe.Core
                 {
                     DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(SlotViewJson));
                     SlotViewJson SlotSon = (SlotViewJson)deserializer.ReadObject(ms);
+
                     SlotViewModel.SlotJson = SlotSon;
                 }
 

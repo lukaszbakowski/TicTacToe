@@ -55,13 +55,13 @@ namespace TicTacToe.ViewModels
         }
         internal void LeftJoin_cmd()
         {
-            SlotViewJson TEST = new SlotViewJson();
-            TEST.RightJoin.Nick = "kupa";
-            TEST.RightJoin.Button = false;
+            SlotViewJson JSON = SlotJson;
+            JSON.Left.Nick = MainWindow.PlayerName;
+            JSON.Left.Button = false;
 
-            string test = Serializer(TEST);
+            string StringSon = Serializer(JSON);
 
-            CoreClientConnect.ConnCommand(3, test);
+            CoreClientConnect.ConnCommand(3, StringSon);
         }
         public ICommand RightJoin
         {
@@ -73,14 +73,52 @@ namespace TicTacToe.ViewModels
         internal void RightJoin_cmd()
         {
 
-            SlotViewJson TEST = new SlotViewJson();
-            TEST.RightJoin.Nick = MainWindow.PlayerName;
-            TEST.RightJoin.Button = false;
+            SlotViewJson JSON = SlotJson;
+            JSON.Right.Nick = MainWindow.PlayerName;
+            JSON.Right.Button = false;
 
-            string test = Serializer(TEST);
+            string StringSon = Serializer(JSON);
 
-            CoreClientConnect.ConnCommand(3, test);
+            CoreClientConnect.ConnCommand(3, StringSon);
         }
+
+        public ICommand RightLeave
+        {
+            get
+            {
+                return new BaseUserRelay(RightLeave_cmd);
+            }
+        }
+        internal void RightLeave_cmd()
+        {
+            SlotViewJson JSON = SlotJson;
+            JSON.Right.Nick = "O";
+            JSON.Right.Button = true;
+
+            string StringSon = Serializer(JSON);
+
+            CoreClientConnect.ConnCommand(3, StringSon);
+
+        }
+        public ICommand LeftLeave
+        {
+            get
+            {
+                return new BaseUserRelay(LeftLeave_cmd);
+            }
+        }
+        internal void LeftLeave_cmd()
+        {
+            SlotViewJson JSON = SlotJson;
+            JSON.Left.Nick = "X";
+            JSON.Left.Button = true;
+
+            string StringSon = Serializer(JSON);
+
+            CoreClientConnect.ConnCommand(3, StringSon);
+
+        }
+
         #endregion
 
     }
