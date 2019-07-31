@@ -65,12 +65,12 @@
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\BaseUserConnect.cs" />
-    <Compile Include="ViewModels\Base\BaseUserControl.cs" />
+    <Compile Include="ViewModels\Base\BaseUserModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\MsgViewModel.cs" />
     <Compile Include="ViewModels\SlotViewModel.cs" />
-    <Compile Include="Views\BaseUserView.cs" />
+    <Compile Include="Views\BaseUserControl.cs" />
     <Compile Include="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>

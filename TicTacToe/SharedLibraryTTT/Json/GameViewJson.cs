@@ -8,17 +8,18 @@ namespace SharedLibraryTTT.Json
 {
     public class GameViewJson
     {
-        public string[,] GameBoard { get; set; }
-        GameViewJson()
+        public string[] Content { get; set; }
+        public bool[] Button { get; set; }
+        public GameViewJson()
         {
-            GameBoard = new string[3, 3];
-            for (int i = 0; i < GameBoard.Length;i++)
+            Content = new string[9];
+            Button = new bool[9];
+            for (int i = 0; i < 9;i++)
             {
-                for(int j = 0; j < GameBoard.Length;j++)
-                {
-                    GameBoard[i,j] = "";
-                }
+                Content[i] = "";
+                Button[i] = false;
             }
+
         }
     }
 }

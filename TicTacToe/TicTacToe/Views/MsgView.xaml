@@ -1,4 +1,4 @@
-﻿<local:BaseUserView x:Class="TicTacToe.Views.MsgView"
+﻿<local:BaseUserControl x:Class="TicTacToe.Views.MsgView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -39,4 +39,4 @@
 
         <Button x:Name="btSend" Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" HorizontalAlignment="Right" Command="{Binding SendCommand}"></Button>
     </Grid>
-</local:BaseUserView>
+</local:BaseUserControl>

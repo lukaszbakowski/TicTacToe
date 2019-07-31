@@ -1,4 +1,4 @@
-﻿<local:BaseUserView x:Class="TicTacToe.Views.MainMenu"
+﻿<local:BaseUserControl x:Class="TicTacToe.Views.MainMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,12 +7,13 @@
              xmlns:conn="clr-namespace:TicTacToe.Core"
              xmlns:model="clr-namespace:TicTacToe.ViewModels"
              mc:Ignorable="d" 
+             Loaded="GetDataOnLoad"
              d:DesignHeight="50" d:DesignWidth="900">
-    <UserControl.Resources>
-        <model:MenuViewModel x:Key="MenuViewModel"/>
-        <conn:CoreClientParams x:Key="CoreClientParams" />
-    </UserControl.Resources>
-    <Grid DataContext="{Binding Source={StaticResource MenuViewModel}}" >
+
+    <Grid >
+        <Grid.Resources>
+            <model:MenuViewModel x:Key="MenuViewModel"/>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -25,10 +26,18 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Content="Start" Grid.Column="0" IsEnabled="False"/>
-        <Button Content="Stop" Grid.Column="1" IsEnabled="False"/>
-        <Button Content="Restart" Grid.Column="2" IsEnabled="False"/>
-        <Button Content="Ranking" Grid.Column="3"/>
+        <Button Content="Start" 
+                Grid.Column="0" 
+                IsEnabled="{Binding Source={StaticResource MenuViewModel}, Path=MainMenu.Start, Mode=OneWay}"
+                Click="Click_Start"
+                Command=""/>
+        <Button Content="Surrender" 
+                Grid.Column="1" 
+                IsEnabled="{Binding Source={StaticResource MenuViewModel}, Path=MainMenu.Surrender, Mode=OneWay}"
+                Click="Click_Surrender"
+                Command=""/>
+        <Button Content="Ranking" Grid.Column="2" IsEnabled="False"/>
+        <Button Content="Unknown" Grid.Column="3" IsEnabled="False" Visibility="Hidden"/>
         <Button Content="Unknown" Grid.Column="4" IsEnabled="False" Visibility="Hidden"/>
     </Grid>
-</local:BaseUserView>
+</local:BaseUserControl>

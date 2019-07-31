@@ -20,13 +20,12 @@ namespace TicTacToe.Views
     /// <summary>
     /// Interaction logic for SlotView.xaml
     /// </summary>
-    public partial class SlotView : BaseUserView
+    public partial class SlotView : BaseUserControl
     {
 
         public SlotView()
         {
             InitializeComponent();
-
         }
 
         private void Click_RightJoin(object sender, RoutedEventArgs e)

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Json\Base\BaseJson.cs" />
     <Compile Include="Json\GameViewJson.cs" />
+    <Compile Include="Json\MenuViewJson.cs" />
     <Compile Include="Json\SlotViewJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCommands.cs" />

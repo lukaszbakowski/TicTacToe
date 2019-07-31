@@ -16,9 +16,9 @@ using System.Runtime.Serialization.Json;
 
 namespace TicTacToe.Views
 {
-      public class BaseUserView : UserControl
+      public class BaseUserControl : UserControl
     {
-        public BaseUserView()
+        public BaseUserControl()
         {
             
         }

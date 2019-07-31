@@ -16,7 +16,7 @@ using System.Runtime.Serialization.Json;
 
 namespace TicTacToe.ViewModels.Base
 {
-    public class BaseUserConnect<TYPE> : BaseUserControl where TYPE : class
+    public class BaseUserConnect<TYPE> : BaseUserModel where TYPE : class
     {
 
         

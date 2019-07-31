@@ -42,7 +42,6 @@ namespace ServerTTT
                     {
                   
                         DoCommand1();
-                        Console.WriteLine("IS THAT WORKING OR RETURNING?");
 
                     }
                     else if (data == SharedCommands.Command_2)

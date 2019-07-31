@@ -21,7 +21,7 @@ namespace TicTacToe.Views
     /// <summary>
     /// Interaction logic for MsgView.xaml
     /// </summary>
-    public partial class MsgView : BaseUserView
+    public partial class MsgView : BaseUserControl
     {
           
         public MsgView()

@@ -19,11 +19,15 @@ namespace TicTacToe.Views
     /// <summary>
     /// Interaction logic for game.xaml
     /// </summary>
-    public partial class GameView : BaseUserView
+    public partial class GameView : BaseUserControl
     {
         public GameView()
         {
             InitializeComponent();
+        }
+        private void GetDataOnLoad(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
