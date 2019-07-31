@@ -56,16 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\CoreClientParams.cs" />
     <Compile Include="Service\MessageHelper.cs" />
     <Compile Include="Core\CoreClientConnect.cs" />
     <Compile Include="Core\CoreClientListening.cs" />
-    <Compile Include="ViewModels\Base\BaseUserRelay.cs" />
+    <Compile Include="ViewModels\Base\BaseViewRelay.cs" />
     <Compile Include="StartUp.xaml.cs">
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Base\BaseUserConnect.cs" />
-    <Compile Include="ViewModels\Base\BaseUserModel.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\MsgViewModel.cs" />

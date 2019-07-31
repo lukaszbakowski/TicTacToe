@@ -39,10 +39,13 @@ namespace SharedLibraryTTT
                     byte[] data = new byte[256];
                     data = System.Text.Encoding.ASCII.GetBytes(_command);
                     _stream.Write(data, 0, data.Length);
+                    Console.WriteLine("SENT DATA1:" + data);
                     data = System.Text.Encoding.ASCII.GetBytes(_msg);
                     _stream.Write(data, 0, data.Length);
+                    Console.WriteLine("SENT DATA2:" + data);
                     return true;
-                } else
+                }
+                else
                 {
                     return false;
                 }

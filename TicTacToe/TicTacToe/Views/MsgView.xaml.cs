@@ -58,11 +58,6 @@ namespace TicTacToe.Views
                 
             }
         }
-        //public void BtSend_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string hello = tbSend.Text;
-        //    conn.SendMessages(hello);
-        //    tbSend.Text = "";
-        //}
+
     }
 }

@@ -27,14 +27,16 @@ namespace TicTacToe.Core
         public static void ReceiveMessages()
         {
             
-            byte[] bytes = new byte[256];
+            byte[] bytes = new byte[8];
             string responseData;
             int i;
             try
             {
-                while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
+                while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) > 0)
                 {
+
                     responseData = Encoding.ASCII.GetString(bytes, 0, i);
+                    
                     if(responseData == SharedCommands.Command_1)
                     {
                         DoCommand1();
@@ -59,43 +61,48 @@ namespace TicTacToe.Core
                     {
                         throw new Exception("CONNECTION CORRUPTED - command error");
                     }
-                    
                 }
             }
             catch (Exception ex)
             {
-                MessageHelper.MsgErrorOk("Listening ERROR: " + ex, "Listening ERROR");
+                MessageHelper.MsgErrorOk("Listening ERROR", "Listening ERROR: " + ex.ToString());
             }
 
         }
         private static void DoCommand1()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.NickList = data;
+                BaseJson<MsgViewJson> JSON = new BaseJson<MsgViewJson>();
+                MsgViewJson _CopySon = MsgViewModel.MsgSon;
+                MsgViewJson _MsgSon = JSON.Deserializer(data);
+                _CopySon.Nick = _MsgSon.Nick;
+                MsgViewModel.MsgSon = _CopySon;
                 return;
             }
         }
         private static void DoCommand2()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.MessageReceived += data + "\n";
+                MsgViewJson _MsgSon = MsgViewModel.MsgSon;
+                _MsgSon.Message += data + "\n";
+                MsgViewModel.MsgSon = _MsgSon;
 
                 return;
             }
         }
         private static void DoCommand3()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
@@ -109,26 +116,26 @@ namespace TicTacToe.Core
         }
         private static void DoCommand4()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.MessageReceived = data + "\n";
+                
 
                 return;
             }
         }
         private static void DoCommand5()
         {
-            string data = null;
+            string data;
             byte[] bytes = new byte[256];
             int i;
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                CoreClientParams.MessageReceived = data + "\n";
+                
 
                 return;
             }

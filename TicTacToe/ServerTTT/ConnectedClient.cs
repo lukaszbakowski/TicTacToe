@@ -29,7 +29,7 @@ namespace ServerTTT
         {
 
             string data;
-            byte[] bytes = new byte[256];
+            byte[] bytes = new byte[8];
             int i;
             NetworkStream test = Client.GetStream();
             try
@@ -42,7 +42,8 @@ namespace ServerTTT
                     {
                   
                         DoCommand1();
-
+                        DataResponse("MsgViewJson");
+                        
                     }
                     else if (data == SharedCommands.Command_2)
                     {
@@ -51,7 +52,7 @@ namespace ServerTTT
                     else if(data == SharedCommands.Command_3)
                     {
                         DoCommand3();
-                        DataSend("SlotViewJson");
+                        DataResponse("SlotViewJson");
                     }
                     else if (data == SharedCommands.Command_4)
                     {
@@ -72,6 +73,7 @@ namespace ServerTTT
             {
                 Console.WriteLine("Server Thread ERROR: {0}", e.ToString());
                 ResponseHandler.ConnClientList.Remove(this);
+                Server.GameBoard.MsgSon.Nick.Remove(Thread.CurrentThread.Name);
                 stream.Close();
                 Client.Close();
                 Thread.CurrentThread.Abort();
@@ -87,13 +89,7 @@ namespace ServerTTT
                 data = Encoding.ASCII.GetString(bytes, 0, i);
                 Console.WriteLine("{1}: Nickname: {0}", data, Thread.CurrentThread.ManagedThreadId);
                 Thread.CurrentThread.Name = data;
-                data = string.Empty;
-                foreach(ConnectedClient cntClnt in ResponseHandler.ConnClientList)
-                {
-                    data += cntClnt.thread.Name + "\n";
-                }
-
-                ResponseHandler.SendMessage(SharedCommands.Command_1, data);
+                Server.GameBoard.MsgSon.Nick.Add(data);
                 
                 return;
             }
@@ -123,11 +119,7 @@ namespace ServerTTT
 
                 Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
                 BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
-                SlotViewJson NewSlot = JSON.Deserializer(data);
-
-                
-
-                Server.GameBoard.SlotSon = NewSlot;
+                Server.GameBoard.SlotSon = JSON.Deserializer(data);
                 //string test = JSON.Serializer(Server.GameBoard.SlotSon);
                 //Console.WriteLine("TEST: " + test);
                 return;
@@ -142,7 +134,7 @@ namespace ServerTTT
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
 
-                DataSend(data);
+                DataResponse(data);
                 return;
             }
         }
@@ -150,16 +142,19 @@ namespace ServerTTT
         {
 
         }
-        private void DataSend(string _choice)
+        private void DataResponse(string _choice)
         {
             switch(_choice)
             {
                 case "SlotViewJson":
-                    BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
+                    BaseJson<SlotViewJson> SlotJSON = new BaseJson<SlotViewJson>();
                     //string test = JSON.Serializer(Server.GameBoard.SlotSon);
                     //Console.WriteLine("RESPONSE TEST: " + test);
-                    ResponseHandler.SendMessage(SharedCommands.Command_3, JSON.Serializer(Server.GameBoard.SlotSon));
-                    
+                    ResponseHandler.SendMessage(SharedCommands.Command_3, SlotJSON.Serializer(Server.GameBoard.SlotSon));
+                    break;
+                case "MsgViewJson":
+                    BaseJson<MsgViewJson> MsgJSON = new BaseJson<MsgViewJson>();
+                    ResponseHandler.SendMessage(SharedCommands.Command_1, MsgJSON.Serializer(Server.GameBoard.MsgSon));
                     break;
             }
         }

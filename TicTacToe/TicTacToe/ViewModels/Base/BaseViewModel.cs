@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace TicTacToe.ViewModels.Base
 {
-    public class BaseUserModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         #region "INotifyPropertyChanged"
         public event PropertyChangedEventHandler PropertyChanged;

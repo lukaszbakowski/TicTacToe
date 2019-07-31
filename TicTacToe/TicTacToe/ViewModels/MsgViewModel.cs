@@ -10,20 +10,39 @@ using TicTacToe.Core;
 using System.Net.Sockets;
 using TicTacToe.Views;
 using SharedLibraryTTT.Json;
+using SharedLibraryTTT.Json.Base;
 
 
 namespace TicTacToe.ViewModels
 {
-    public class MsgViewModel : BaseUserConnect<SlotViewJson>
+    public class MsgViewModel : BaseViewModel
     {
 
         public MsgViewModel()
         {
-          
+            _msgSon = new MsgViewJson();
         }
-
-
         #region "settery i gettery"
+        private static MsgViewJson _msgSon;
+        public static MsgViewJson MsgSon
+        {
+            get
+            {
+                return _msgSon;
+            }
+            set
+            {
+                _msgSon = value;
+                OnMsgSonChanged(EventArgs.Empty);
+            }
+        }
+        public static event EventHandler MsgSonChanged;
+
+        protected static void OnMsgSonChanged(EventArgs e)
+        {
+            MsgSonChanged?.Invoke(null, e);
+        }
+        
         private string textSend;
         public string TextSend
         {
@@ -42,7 +61,7 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseUserRelay(MsgSend_cmd);
+                return new BaseViewRelay(MsgSend_cmd);
             }
         }
 

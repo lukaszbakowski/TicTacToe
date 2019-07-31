@@ -8,12 +8,12 @@ using System.Windows.Input;
 
 namespace TicTacToe.ViewModels.Base
 {
-    class BaseUserRelay : ICommand
+    class BaseViewRelay : ICommand
     {
 
          private Action commandTask;
   
-          public BaseUserRelay(Action workToDo)
+          public BaseViewRelay(Action workToDo)
           {
               commandTask = workToDo;
           }

@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using TicTacToe.ViewModels.Base;
 using System.Windows.Input;
 using SharedLibraryTTT.Json;
+using SharedLibraryTTT.Json.Base;
 using TicTacToe.Core;
 
 
 
 namespace TicTacToe.ViewModels
 {
-    public class SlotViewModel : BaseUserConnect<SlotViewJson>
+    public class SlotViewModel : BaseViewModel
     {
-        
+        private BaseJson<SlotViewJson> JSON = new BaseJson<SlotViewJson>();
         public SlotViewModel()
         {
             _slotJson = new SlotViewJson();
@@ -50,7 +51,7 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseUserRelay(LeftJoin_cmd);
+                return new BaseViewRelay(LeftJoin_cmd);
             }
         }
         internal void LeftJoin_cmd()
@@ -59,7 +60,7 @@ namespace TicTacToe.ViewModels
             SlotJson.Left.Nick = MainWindow.PlayerName;
             SlotJson.Left.Button = false;
 
-            string StringSon = Serializer(SlotJson);
+            string StringSon = JSON.Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
         }
@@ -67,7 +68,7 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseUserRelay(RightJoin_cmd);
+                return new BaseViewRelay(RightJoin_cmd);
             }
         }
         internal void RightJoin_cmd()
@@ -77,7 +78,7 @@ namespace TicTacToe.ViewModels
             SlotJson.Right.Nick = MainWindow.PlayerName;
             SlotJson.Right.Button = false;
 
-            string StringSon = Serializer(SlotJson);
+            string StringSon = JSON.Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
         }
@@ -86,7 +87,7 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseUserRelay(RightLeave_cmd);
+                return new BaseViewRelay(RightLeave_cmd);
             }
         }
         internal void RightLeave_cmd()
@@ -95,7 +96,7 @@ namespace TicTacToe.ViewModels
             SlotJson.Right.Nick = "O";
             SlotJson.Right.Button = true;
 
-            string StringSon = Serializer(SlotJson);
+            string StringSon = JSON.Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
 
@@ -104,7 +105,7 @@ namespace TicTacToe.ViewModels
         {
             get
             {
-                return new BaseUserRelay(LeftLeave_cmd);
+                return new BaseViewRelay(LeftLeave_cmd);
             }
         }
         internal void LeftLeave_cmd()
@@ -113,7 +114,7 @@ namespace TicTacToe.ViewModels
             SlotJson.Left.Nick = "X";
             SlotJson.Left.Button = true;
 
-            string StringSon = Serializer(SlotJson);
+            string StringSon = JSON.Serializer(SlotJson);
 
             CoreClientConnect.ConnCommand(3, StringSon);
 

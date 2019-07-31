@@ -8,7 +8,7 @@ using TicTacToe.ViewModels.Base;
 
 namespace TicTacToe.ViewModels
 {
-    class GameViewModel : BaseUserConnect<GameViewJson>
+    class GameViewModel : BaseViewModel
     {
         public GameViewModel()
         {

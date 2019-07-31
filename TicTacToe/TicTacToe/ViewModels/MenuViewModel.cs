@@ -8,7 +8,7 @@ using TicTacToe.ViewModels.Base;
 
 namespace TicTacToe.ViewModels
 {
-    public class MenuViewModel : BaseUserConnect<MenuViewModel>
+    public class MenuViewModel : BaseViewModel
     {
         public MenuViewModel()
         {

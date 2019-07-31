@@ -55,7 +55,6 @@
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Left" 
                    Grid.Column="0" Grid.Row="0" 
-                   
                    IsEnabled="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Button[0]}"></Button>
         <Button Background="LightGray" 
                 Content="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Content[1]}"
@@ -64,7 +63,6 @@
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Center" 
                    Grid.Column="1" Grid.Row="0" 
-                   
                    IsEnabled="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Button[1], Mode=OneWay}"></Button>
         <Button Background="LightGray" 
                 Content="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Content[2]}"
@@ -73,7 +71,6 @@
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Right" 
                    Grid.Column="2" Grid.Row="0" 
-                   
                    IsEnabled="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Button[2], Mode=OneWay}"></Button>
         <Button Background="LightGray" Width="145" 
                 Content="{Binding Source={StaticResource GameViewModel}, Path=MainBoard.Content[3]}"

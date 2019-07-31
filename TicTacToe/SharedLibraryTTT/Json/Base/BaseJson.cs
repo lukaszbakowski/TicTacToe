@@ -34,7 +34,7 @@ namespace SharedLibraryTTT.Json.Base
         {
             using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(_data)))
             {
-                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(SlotViewJson));
+                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(TYPE));
                 TYPE SlotSon = (TYPE)deserializer.ReadObject(ms);
                 ms.Close();
                 return SlotSon;
