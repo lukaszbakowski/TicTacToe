@@ -1,0 +1,57 @@
+﻿<Window x:Class="TicTacToe.Dialogs.StartGameDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTacToe.Dialogs"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        x:Name="TEST"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        Title="Start Game" Height="333" Width="444">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="tbCommunicate" 
+                   Text="{Binding Path=Communicate}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Grid.ColumnSpan="2" 
+                   FontSize="17"
+                   Grid.Row="0"/>
+        <TextBlock x:Name="tbOutputMessage" 
+                   Text="{Binding Path=OutputMessage}" 
+                   Grid.Row="1"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Grid.ColumnSpan="2" 
+                   FontSize="50"/>
+        <Button Grid.Row="2" 
+                Grid.Column="1" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="111" Height="44" 
+                Content="Resignation"
+                x:Name="btnCancel"
+                Click="BtnCancel_Click"
+                
+                IsCancel="True"/>
+        <Button Grid.Row="2" 
+                Grid.Column="0" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="111" Height="44" 
+                Content="Accept"
+                Click="BtnStart_Click"
+                IsDefault="True"
+                x:Name="btnStart"/>
+    </Grid>
+</Window>

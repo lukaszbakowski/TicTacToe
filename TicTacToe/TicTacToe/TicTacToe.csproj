@@ -56,12 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\StartGameDialog.xaml.cs">
+      <DependentUpon>StartGameDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service\MessageHelper.cs" />
     <Compile Include="Core\CoreClientConnect.cs" />
     <Compile Include="Core\CoreClientListening.cs" />
     <Compile Include="ViewModels\Base\BaseViewRelay.cs" />
-    <Compile Include="StartUp.xaml.cs">
-      <DependentUpon>StartUp.xaml</DependentUpon>
+    <Compile Include="StartLoginWindow.xaml.cs">
+      <DependentUpon>StartLoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
@@ -81,6 +84,10 @@
     <Compile Include="Views\SlotView.xaml.cs">
       <DependentUpon>SlotView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogs\StartGameDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,7 +100,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StartUp.xaml">
+    <Page Include="StartLoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -56,6 +56,9 @@ namespace TicTacToe.Core
                 case 5://
                     SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_5, _msg);
                     break;
+                case 6://
+                    SharedCommands.SendCommandHandler(Stream, SharedCommands.Command_6, _msg);
+                    break;
 
             }
         }

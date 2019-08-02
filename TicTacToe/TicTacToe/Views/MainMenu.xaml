@@ -30,7 +30,7 @@
                 Grid.Column="0" 
                 IsEnabled="{Binding Source={StaticResource MenuViewModel}, Path=MainMenu.Start, Mode=OneWay}"
                 Click="Click_Start"
-                Command=""/>
+                Command="{Binding Source={StaticResource MenuViewModel}, Path=StartGame}"/>
         <Button Content="Surrender" 
                 Grid.Column="1" 
                 IsEnabled="{Binding Source={StaticResource MenuViewModel}, Path=MainMenu.Surrender, Mode=OneWay}"

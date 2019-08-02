@@ -57,6 +57,10 @@ namespace TicTacToe.Core
                     {
                         DoCommand5();
                     }
+                    else if(responseData == SharedCommands.Command_6)
+                    {
+                        DoCommand6();
+                    }
                     else
                     {
                         throw new Exception("CONNECTION CORRUPTED - command error");
@@ -135,7 +139,24 @@ namespace TicTacToe.Core
             while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
             {
                 data = Encoding.ASCII.GetString(bytes, 0, i);
-                
+                BaseJson<MenuViewJson> JSON = new BaseJson<MenuViewJson>();
+                MenuViewModel.MainMenu = JSON.Deserializer(data);
+
+
+
+
+                return;
+            }
+        }
+        private static void DoCommand6()
+        {
+            string data;
+            byte[] bytes = new byte[256];
+            int i;
+            while ((i = ListeningStream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data = Encoding.ASCII.GetString(bytes, 0, i);
+
 
                 return;
             }

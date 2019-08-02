@@ -35,12 +35,15 @@
 
         </ListBox>
         <TextBox Text="{Binding Source={StaticResource MsgViewModel}, Path=TextSend, Mode=TwoWay}" 
-                 PreviewKeyDown="cmdEnter_Click" Grid.Column="0" 
+                 Grid.Column="0" 
                  Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" 
-                 Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                 Width="333" VerticalContentAlignment="Center" HorizontalAlignment="Left" >
+        </TextBox>
 
         <Button x:Name="btSend" Grid.Column="1" Content="Send" Grid.Row="2" Height="25" Width="111" 
                 HorizontalAlignment="Right" 
-                Command="{Binding Source={StaticResource MsgViewModel}, Path=SendCommand}"></Button>
+                Command="{Binding Source={StaticResource MsgViewModel}, Path=SendCommand}">
+
+        </Button>
     </Grid>
 </local:BaseUserControl>

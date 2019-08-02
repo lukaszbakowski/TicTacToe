@@ -22,6 +22,11 @@ namespace SharedLibraryTTT
         public static string Command_3 = GetBase64(0xFFFF03); //slots handler
         public static string Command_4 = GetBase64(0xFFFF04); //data handler
         public static string Command_5 = GetBase64(0xFFFF05); //game handler
+        public static string Command_6 = GetBase64(0xFFFF06);
+        public static string Command_7 = GetBase64(0xFFFF07);
+        public static string Command_8 = GetBase64(0xFFFF08);
+        public static string Command_9 = GetBase64(0xFFFF09);
+        public static string Command_10 = GetBase64(0xFFFF10);
         #endregion
         public static string GetBase64(int _hex)
         {

@@ -20,10 +20,10 @@ namespace TicTacToe
     /// <summary>
     /// Interaction logic for StartUp.xaml
     /// </summary>
-    public partial class StartUp : Window
+    public partial class StartLoginWindow : Window
     {
         private readonly MainWindow _mainWindow = new MainWindow();
-        public StartUp()
+        public StartLoginWindow()
         {
             InitializeComponent();
         }

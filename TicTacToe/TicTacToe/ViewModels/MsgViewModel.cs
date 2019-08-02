@@ -67,8 +67,11 @@ namespace TicTacToe.ViewModels
 
         internal void MsgSend_cmd()
         {
-            CoreClientConnect.ConnCommand(2, TextSend);
-            TextSend = "";
+            if(!string.IsNullOrEmpty(TextSend))
+            {
+                CoreClientConnect.ConnCommand(2, TextSend);
+                TextSend = "";
+            }
         }
 
         #endregion

@@ -38,30 +38,42 @@ namespace ServerTTT
                 {
 
                     data = Encoding.ASCII.GetString(bytes, 0, i);
-                    if (data == SharedCommands.Command_1)
+                    if (data == SharedCommands.Command_1) //login
                     {
                   
                         DoCommand1();
                         DataResponse("MsgViewJson");
                         
                     }
-                    else if (data == SharedCommands.Command_2)
+                    else if (data == SharedCommands.Command_2) //msg
                     {
                         DoCommand2();
                     }
-                    else if(data == SharedCommands.Command_3)
+                    else if(data == SharedCommands.Command_3) //slot
                     {
                         DoCommand3();
                         DataResponse("SlotViewJson");
+                        //if(Server.GameBoard.SlotSon.Left.Button == false && Server.GameBoard.SlotSon.Right.Button == false)
+                        //{
+                        //    DataResponse("MenuViewJson");
+                        //}
                     }
-                    else if (data == SharedCommands.Command_4)
+                    else if (data == SharedCommands.Command_4) //get data
                     {
                         DoCommand4();
                     }
-                    else if (data == SharedCommands.Command_5)
+                    else if (data == SharedCommands.Command_5) //menu
                     {
                       
                         DoCommand5();
+                        DataResponse("MenuViewJson");
+                        
+                    }
+                    else if (data == SharedCommands.Command_6) //menu
+                    {
+
+                        DoCommand6();
+                       
                     }
                     else
                     {
@@ -140,7 +152,31 @@ namespace ServerTTT
         }
         private void DoCommand5()
         {
+            string data;
+            byte[] bytes = new byte[256];
+            int i;
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data = Encoding.ASCII.GetString(bytes, 0, i);
+                Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
+                BaseJson<MenuViewJson> JSON = new BaseJson<MenuViewJson>();
 
+                Server.GameBoard.MenuSon = JSON.Deserializer(data);
+                return;
+            }
+        }
+        private void DoCommand6()
+        {
+            string data;
+            byte[] bytes = new byte[256];
+            int i;
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data = Encoding.ASCII.GetString(bytes, 0, i);
+                Console.WriteLine("{1}: Received: {0}", data, Thread.CurrentThread.Name);
+             
+                return;
+            }
         }
         private void DataResponse(string _choice)
         {
@@ -155,6 +191,10 @@ namespace ServerTTT
                 case "MsgViewJson":
                     BaseJson<MsgViewJson> MsgJSON = new BaseJson<MsgViewJson>();
                     ResponseHandler.SendMessage(SharedCommands.Command_1, MsgJSON.Serializer(Server.GameBoard.MsgSon));
+                    break;
+                case "MenuViewJson":
+                    BaseJson<MenuViewJson> MenuJSON = new BaseJson<MenuViewJson>();
+                    ResponseHandler.SendMessage(SharedCommands.Command_5, MenuJSON.Serializer(Server.GameBoard.MenuSon));
                     break;
             }
         }

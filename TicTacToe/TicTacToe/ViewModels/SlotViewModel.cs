@@ -32,8 +32,22 @@ namespace TicTacToe.ViewModels
             }
             set
             {
-                _slotJson = value;
-                OnSlotJsonChanged(EventArgs.Empty);
+                if(_slotJson != value)
+                {
+                    _slotJson = value;
+                    OnSlotJsonChanged(EventArgs.Empty);
+                    MenuViewJson MenuJSON = new MenuViewJson();
+                    if(SlotJson.Left.Button == false && SlotJson.Right.Button == false)
+                    {
+                        MenuJSON.Start = true;
+                        MenuViewModel.MainMenu = MenuJSON;
+                    }
+                    else
+                    {
+                        MenuJSON.Start = false;
+                        MenuViewModel.MainMenu = MenuJSON;
+                    }
+                }
             }
         }
 
